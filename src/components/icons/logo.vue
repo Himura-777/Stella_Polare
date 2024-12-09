@@ -1,5 +1,6 @@
 <template>
   <svg
+    class="z-10"
     width="60"
     height="60"
     viewBox="0 0 60 60"
@@ -8,12 +9,7 @@
   >
     <g filter="url(#filter0_iiiiii_1_3268)">
       <g clip-path="url(#clip0_1_3268)">
-        <rect
-          width="59.9316"
-          height="60"
-          rx="10"
-          fill="url(#paint0_linear_1_3268)"
-        />
+        <rect width="59.9316" height="60" rx="10" fill="url(#paint0_linear_1_3268)" />
         <rect
           x="6.48828"
           y="8.42334"
@@ -96,12 +92,7 @@
         color-interpolation-filters="sRGB"
       >
         <feFlood flood-opacity="0" result="BackgroundImageFix" />
-        <feBlend
-          mode="normal"
-          in="SourceGraphic"
-          in2="BackgroundImageFix"
-          result="shape"
-        />
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -117,15 +108,8 @@
         <feOffset dx="0.575" dy="1.25" />
         <feGaussianBlur stdDeviation="0.89375" />
         <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-        <feColorMatrix
-          type="matrix"
-          values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.7 0"
-        />
-        <feBlend
-          mode="normal"
-          in2="shape"
-          result="effect1_innerShadow_1_3268"
-        />
+        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.7 0" />
+        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_1_3268" />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -225,10 +209,7 @@
         <feOffset dy="0.25" />
         <feGaussianBlur stdDeviation="0.25" />
         <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-        <feColorMatrix
-          type="matrix"
-          values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0"
-        />
+        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0" />
         <feBlend
           mode="normal"
           in2="effect5_innerShadow_1_3268"

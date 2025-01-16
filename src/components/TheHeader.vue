@@ -1,9 +1,14 @@
 <script setup>
+import '../App.css'
+
 import Logo from './icons/logo.vue'
+
+import { openMenu, useMenuState } from '../logic.js'
+const { isMenuOpen } = useMenuState()
 </script>
 
 <template>
-  <div class="flex items-center justify-between">
+  <div class="md:flex items-center justify-between hidden">
     <a href="#">
       <div
         class="flex gap-x-3 items-center relative after:block after:w-[93.8%] after:h-[130%] after:inset-0 after:my-auto after:ml-[-3px] after:absolute after:bg-[#0052B3]/60 after:blur-2xl"
@@ -40,5 +45,63 @@ import Logo from './icons/logo.vue'
     >
       Связаться с нами
     </button>
+  </div>
+
+  <div class="md:hidden relative">
+    <div class="flex items-center justify-between bg-[#222429] rounded-xl px-[20px] py-[14px]">
+      <a href="#">
+        <div class="flex gap-x-3 items-center">
+          <Logo />
+          <p
+            class="z-10 text-2xl font-medium leading-7 text-transparent bg-clip-text bg-gradient-to-r from-white to-[#ACD1FD]"
+          >
+            Stella <br />
+            Polare
+          </p>
+        </div>
+      </a>
+
+      <button class="px-[20px] py-[10px] bg-white/10 rounded-lg" @click="openMenu">
+        <svg
+          class="transform transition-transform duration-300"
+          :class="{ 'rotate-45': isMenuOpen }"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8.83333 8.83333V14.6667C8.83333 14.8877 8.74554 15.0996 8.58926 15.2559C8.43297 15.4122 8.22101 15.5 8 15.5C7.77899 15.5 7.56702 15.4122 7.41074 15.2559C7.25446 15.0996 7.16667 14.8877 7.16667 14.6667V8.83333H1.33333C1.11232 8.83333 0.900358 8.74554 0.744078 8.58926C0.587797 8.43297 0.5 8.22101 0.5 8C0.5 7.77899 0.587797 7.56702 0.744078 7.41074C0.900358 7.25446 1.11232 7.16667 1.33333 7.16667H7.16667V1.33333C7.16667 1.11232 7.25446 0.900358 7.41074 0.744078C7.56702 0.587797 7.77899 0.5 8 0.5C8.22101 0.5 8.43297 0.587797 8.58926 0.744078C8.74554 0.900358 8.83333 1.11232 8.83333 1.33333V7.16667H14.6667C14.8877 7.16667 15.0996 7.25446 15.2559 7.41074C15.4122 7.56702 15.5 7.77899 15.5 8C15.5 8.22101 15.4122 8.43297 15.2559 8.58926C15.0996 8.74554 14.8877 8.83333 14.6667 8.83333H8.83333Z"
+            fill="white"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <ul
+      class="z-30 w-full px-[1.875rem] bg-[#222429] rounded-b-xl flex flex-col gap-y-[20px] items-center overflow-hidden transition-all duration-300 absolute top-[80px]"
+      :class="{ 'max-h-96': isMenuOpen, 'max-h-0': !isMenuOpen }"
+    >
+      <li class="mt-4">
+        <a class="text-xl text-white text-opacity-80 font-normal" href="#">О компании</a>
+      </li>
+      <li>
+        <a class="text-xl text-white text-opacity-80 font-normal" href="#">Контакты</a>
+      </li>
+      <li>
+        <a class="text-xl text-white text-opacity-80 font-normal" href="#">Товары</a>
+      </li>
+      <li>
+        <a class="text-xl text-white text-opacity-80 font-normal" href="#">Отзывы</a>
+      </li>
+      <li
+        class="px-6 py-5 border-[2px] border-solid border-white border-opacity-30 text-xl text-white font-medium rounded-full mb-[24px]"
+      >
+        Связаться с нами
+      </li>
+    </ul>
   </div>
 </template>

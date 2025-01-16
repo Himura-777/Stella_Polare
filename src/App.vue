@@ -1,20 +1,35 @@
 <script setup>
 import TheFooter from './components/TheFooter.vue'
 import TheHeader from './components/TheHeader.vue'
+
+import './App.css'
+
+import { useCarousel } from './logic.js'
+
+const { items, showPrev, showNext, transformStyle } = useCarousel()
+
+import { userFeedbacks } from './logic.js'
+const { feedbackItems, getItemClass } = userFeedbacks()
+
+import { useQuestions } from './logic.js'
+const { activeIndex, questions, toggleQuestion } = useQuestions()
 </script>
 
 <template>
-  <div class="bg-[#090C11] py-[3.125rem]">
-    <header class="mx-[3.125rem]">
+  <div
+    class="bg-[#090C11] py-[3.125rem] bg-[url(../images/bg.png)] bg-no-repeat bg-contain bg-bottom"
+  >
+    <header class="mx-[3.907%]">
       <TheHeader />
     </header>
 
     <main class="pt-12 pb-20">
+      <!-- performance -->
       <section
-        class="mx-[3.125rem] py-[8.125rem] text-center bg-[url('../images/performance_bg.png')] bg-no-repeat bg-contain bg-center rounded-[1.25rem] relative before:block before:absolute before:w-[100%] before:h-[100%] before:bg-gradient-to-r from-[#07101D] via-[#07101D]/20 to-[#07101D] before:left-0 before:top-0 before:rounded-[1.25rem] before:z-10 after:block after:absolute after:left-0 after:top-0 after:w-[100%] after:h-[100%] after:rounded-[1.25rem] after:bg-[url('../images/performance_bg2.png')] after:bg-no-repeat after:bg-cover after:bg-center"
+        class="mx-[3.907%] py-[8.125rem] text-center bg-[url('../images/performance_bg.png')] bg-no-repeat bg-contain bg-center rounded-[1.25rem] relative before:block before:absolute before:w-[100%] before:h-[100%] before:bg-gradient-to-r from-[#07101D] via-[#07101D]/20 to-[#07101D] before:left-0 before:top-0 before:rounded-[1.25rem] before:z-10 after:block after:absolute after:left-0 after:top-0 after:w-[100%] after:h-[100%] after:rounded-[1.25rem] after:bg-[url('../images/performance_bg2.png')] after:bg-no-repeat after:bg-cover after:bg-center"
       >
         <h1
-          class="relative z-20 mx-auto w-[50.5%] text-[4rem] text-white font-medium text-center leading-[4rem]"
+          class="relative z-20 mx-auto w-[50.51%] text-[4rem] text-white font-medium text-center leading-[4rem]"
         >
           Stella Polare - твой путеводитель в мире электроники
         </h1>
@@ -30,21 +45,542 @@ import TheHeader from './components/TheHeader.vue'
         </button>
       </section>
 
-      <section class="my-[8.75rem] mx-[3.125rem]">
-        <p class="mx-auto w-[58rem] text-[2rem] text-white font-medium text-center">
+      <!-- hits -->
+      <section class="mt-[116px] mx-[3.907%] relative z-10">
+        <h2
+          class="text-[2.5rem] font-medium mx-[3.907%] bg-[linear-gradient(to_right,_rgba(153,172,190,1)_0%,_rgba(224,240,255,1)_37%,_rgba(153,172,190,1)_63%,_rgba(50,61,72,1)_100%)] bg-clip-text text-transparent"
+        >
+          Топ-хиты
+        </h2>
+        <div class="flex justify-between items-center mt-10 relative w-full">
+          <button
+            class="border-none w-[42px] h-[42px] rounded-[50%] bg-white/80 absolute top-1/2 -translate-y-1/2 -left-[17px] z-10 flex items-center justify-center"
+            type="button"
+            @click="showPrev"
+          >
+            <svg
+              width="9"
+              height="16"
+              viewBox="0 0 9 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.65584 15.6478C8.87621 15.4222 9 15.1163 9 14.7974C9 14.4784 8.87621 14.1725 8.65584 13.947L2.83731 7.99274L8.65584 2.03852C8.86996 1.81166 8.98844 1.50781 8.98576 1.19242C8.98308 0.877029 8.85946 0.575334 8.64152 0.352312C8.42358 0.129289 8.12876 0.00278607 7.82056 4.54345e-05C7.51236 -0.0026952 7.21543 0.118547 6.99374 0.33766L0.344159 7.14231C0.123794 7.36788 -3.63951e-07 7.67378 -3.50009e-07 7.99274C-3.36066e-07 8.3117 0.123794 8.6176 0.344159 8.84317L6.99374 15.6478C7.21417 15.8733 7.5131 16 7.82479 16C8.13648 16 8.43541 15.8733 8.65584 15.6478Z"
+                fill="#101010"
+              />
+            </svg>
+          </button>
+          <div class="overflow-hidden w-full">
+            <ul
+              class="flex transition-transform duration-500 ease-linear"
+              :style="{ transform: transformStyle }"
+            >
+              <li
+                v-for="(item, index) in items"
+                :key="index"
+                class="min-w-full"
+                :class="item.bgClass"
+              >
+                <div class="relative" v-html="item.content"></div>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            class="border-none w-[42px] h-[42px] rounded-[50%] bg-white/80 absolute top-1/2 -translate-y-1/2 -right-[17px] z-10 flex items-center justify-center"
+            type="button"
+            @click="showNext"
+          >
+            <svg
+              width="9"
+              height="16"
+              viewBox="0 0 9 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.34416 0.352184C0.123795 0.577756 9.15048e-07 0.883656 9.01106e-07 1.20261C8.87164e-07 1.52157 0.123795 1.82747 0.34416 2.05305L6.16269 8.00726L0.344159 13.9615C0.130041 14.1883 0.0115608 14.4922 0.0142387 14.8076C0.0169166 15.123 0.140538 15.4247 0.358479 15.6477C0.576418 15.8707 0.871239 15.9972 1.17944 16C1.48764 16.0027 1.78457 15.8815 2.00626 15.6623L8.65584 8.85769C8.87621 8.63212 9 8.32622 9 8.00726C9 7.6883 8.87621 7.3824 8.65584 7.15683L2.00626 0.352184C1.78583 0.126681 1.4869 -3.28408e-07 1.17521 -3.42032e-07C0.863521 -3.55657e-07 0.564591 0.126681 0.34416 0.352184Z"
+                fill="#101010"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- philosophy -->
+      <section class="h-[44.375rem] relative" id="philosophy">
+        <div
+          class="h-full flex items-end pb-[4.5rem] relative before:block before:absolute before:left-0 before:bottom-0 before:w-full before:h-[65%] before:rounded-[30%] before:bg-[#D9D9D9]/2 before:shadow-[0px_0px_20px_10px_rgba(217, 217, 217, 0.2)] before:filter before:blur-[60px] before:backdrop-blur-[4px] before:z-10"
+        >
+          <div class="absolute flex -top-[8.8125rem] w-full">
+            <div
+              class="h-[35rem] w-1/2 bg-[conic-gradient(from_90deg,_#3378ff_0%,_#072b71_18%,_#090c11_36%,_#090c11_40%,_#090c11_46%,_#090c11_56%,_#090c11_67%,_#090c11_73%,_#090c11_78%,_#090c11_87%,_#090c11_94%,_#070707_100%,_#6599ff_100%)]"
+            ></div>
+            <div
+              class="w-1/2 h-[560px] bg-[conic-gradient(from_90deg,_#3378ff_0%,_#072b71_18%,_#090c11_36%,_#090c11_40%,_#090c11_46%,_#090c11_56%,_#090c11_67%,_#090c11_73%,_#090c11_78%,_#090c11_87%,_#090c11_94%,_#070707_100%,_#6599ff_100%)] scale-x-[-1]"
+            ></div>
+            <div
+              class="absolute w-[38.6875rem] h-[15.9375rem] rounded-[50%] left-1/2 -translate-x-1/2 bottom-0 bg-[#0075ff] filter blur-[265px]"
+            ></div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-end gap-y-[2.1875rem]">
+            <p
+              class="w-[12rem] text-2xl font-normal text-[#CFDFF1] text-center relative z-10 before:absolute before:block before:h-[0.125rem] before:w-[4rem] before:-left-[4.625rem] before:top-1/2 before:-translate-y-1/2 before:opacity-80 before:bg-gradient-to-r before:from-[#E2F1FF]/20 before:to-[#E2F1FF] after:absolute after:block after:h-[0.125rem] after:w-[4rem] after:-right-[4.625rem] after:top-1/2 after:-translate-y-1/2 after:opacity-80 after:bg-gradient-to-r after:from-[#E2F1FF] after:to-[#E2F1FF]/20"
+            >
+              Наша философия
+            </p>
+            <h2
+              class="w-[41.6%] text-[2rem] font-medium text-center relative z-10 text-transparent bg-clip-text bg-[linear-gradient(to_bottom,_#C0E0FF_0%,_#13171C_230%)]"
+            >
+              Мы верим, что технологии должны упрощать жизнь, и наша миссия - помочь вам найти
+              нужные решения
+            </h2>
+            <p class="w-[55.8%] text-2xl font-normal text-white/70 text-center relative z-10">
+              Названи8
+              <span class="text-white/90">Stella Polare</span> переводится как
+              <span class="text-white/90">Полярная звезда</span>, которая в древности служила
+              путеводителем. Мы стремимся быть таким же надежным проводником в мире технологий,
+              направляя вас к лучшим решениям для продуктивной и комфортной жизни
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- services -->
+      <section class="mt-[4.6875rem] mx-[3.907%]">
+        <ul class="flex gap-5 flex-wrap w-full">
+          <li
+            class="p-[1.5625rem] flex flex-col justify-end items-start w-[52.543%] h-[20.375rem] rounded-[1.125rem] bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/assortment.png')]"
+          >
+            <div class="w-[26.9375rem]">
+              <h3 class="text-[1.75rem] font-medium text-white">Широкий ассортимент</h3>
+              <p class="mt-4 text-xl font-normal text-white/70">
+                В нашем магазине представлен большой выбор техники: от новейших моделей айфонов и
+                макбуков до аксессуаров и других устройств
+              </p>
+            </div>
+          </li>
+          <li
+            class="p-[1.5625rem] flex flex-col justify-end items-start w-[45.763%] h-[20.375rem] rounded-[1.125rem] bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/consultation.png')]"
+          >
+            <div class="w-[27.1875rem]">
+              <h3 class="text-[1.75rem] font-medium text-white">Консультации экспертов</h3>
+              <p class="mt-4 text-xl font-normal text-white/70">
+                Наши специалисты всегда готовы помочь с выбором и дать подробные консультации по
+                использованию техники
+              </p>
+            </div>
+          </li>
+          <li
+            class="p-[1.5625rem] flex flex-col justify-end items-start w-[45.763%] h-[20.375rem] rounded-[1.125rem] bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/stock.png')]"
+          >
+            <div class="w-[24.9375rem]">
+              <h3 class="text-[1.75rem] font-medium text-white">Специальные предложения и акции</h3>
+              <p class="mt-4 text-xl font-normal text-white/70">
+                Мы регулярно проводим акции и предлагаем специальные скидки на популярные модели
+                техники
+              </p>
+            </div>
+          </li>
+          <li
+            class="p-[1.5625rem] flex flex-col justify-end items-start w-[52.543%] h-[20.375rem] rounded-[1.125rem] bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/guarantee.png')]"
+          >
+            <div class="w-[25.875rem]">
+              <h3 class="text-[1.75rem] font-medium text-white">Гарантия на всю технику</h3>
+              <p class="mt-4 text-xl font-normal text-white/70">
+                Мы предоставляем гарантию на все продаваемые устройства, чтобы вы могли быть уверены
+                в своем выборе
+              </p>
+            </div>
+          </li>
+          <li
+            class="p-[1.5625rem] flex flex-col justify-end items-start w-[52.543%] h-[23.375rem] rounded-[1.125rem] bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/engraving.png')]"
+          >
+            <div class="w-[32.375rem]">
+              <h3 class="text-[1.75rem] font-medium text-white">Лазерная гравировка</h3>
+              <p class="mt-4 text-xl font-normal text-white/70">
+                При необходимости мы нанесем на устройство различные символы, знаки, буквы и даже
+                изображение с помощью лазерного оборудования. Нанесение возможно на любые типы
+                подключаемых клавиатур, встроенных клавиатур ноутбуков, смартфонов и прочих гаджетов
+              </p>
+            </div>
+          </li>
+          <li
+            class="p-[1.5625rem] flex flex-col justify-end items-start w-[45.763%] h-[23.375rem] rounded-[1.125rem] bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/original.png')]"
+          >
+            <div class="w-[27.1875rem]">
+              <h3 class="text-[1.75rem] font-medium text-white">Только оригинальная продукция</h3>
+              <p class="mt-4 text-xl font-normal text-white/70">
+                Stella Polare предлагает своим клиентам только оригинальные и и новые изделия, кроме
+                того, у всей продукции, реализуемой нами, отсутствуют какие-либо ограничения для
+                использования в России
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- attention -->
+      <section class="my-[8.75rem] mx-[3.907%]">
+        <p class="mx-auto w-[77.3%] text-[2rem] text-white font-medium text-center">
           С момента создания Stella Polare клиент всегда стоял у нас на первом месте. Мы стараемся
           сделать для людей, которые приобретают у нас технику, самое лучшее и постоянно пополнять
           ассортимент в соответствии с их запросами
         </p>
+
         <p
-          class="text-[8.75rem] font-medium text-center text-transparent bg-clip-text bg-people-count"
+          class="text-[8.75rem] font-medium text-center text-transparent bg-clip-text bg-[linear-gradient(25deg,_#1E74F9_35%,_#A9CBFF_50%,_#1E74F9_65%)]"
         >
           100+
         </p>
 
-        <p class="mx-auto w-[23rem] text-2xl text-white/70 text-center font-medium">
+        <p class="mx-auto w-[30.2%] text-2xl text-white/70 text-center font-medium">
           Людей стали немного счастливее с нашими товарами
         </p>
+      </section>
+
+      <!-- feedbacks -->
+      <section
+        class="my-[3.4375rem] mx-[3.907%] py-[3.125rem] rounded-[1.25rem] relative z-0 shadow-[inset_0px_0px_50px_rgba(0,0,0,0.5)] bg-[linear-gradient(45deg,_#0075ff,_rgba(92,_167,_255,_0.2))] before:block before:absolute before:left-0 before:bottom-0 before:w-full before:h-full before:rounded-[1.25rem] before:bg-black/60 before:z-10"
+        id="feedbacks"
+      >
+        <span class="mx-[3.907%] text-[1.25rem] font-normal text-white/80 relative z-20"
+          >Отзывы</span
+        >
+        <h2
+          class="mt-[1.125rem] mb-[3.1875rem] mx-[3.907%] text-[3.125rem] font-medium text-white relative z-20"
+        >
+          Что говорят<br />наши клиенты
+        </h2>
+        <ul class="overflow-x-scroll px-[3.125rem] flex gap-x-5 relative z-20 min-h-[23.75rem]">
+          <li
+            v-for="(item, index) in feedbackItems"
+            :key="index"
+            :class="getItemClass(index)"
+            class="feedbacks_item w-[18.75rem] flex flex-col flex-shrink-0"
+          >
+            <div>
+              <div
+                class="w-[4.375rem] h-[4.375rem] flex items-center justify-center text-[#969696] text-[1.875rem] font-normal rounded-[50%] bg-white relative z-2"
+              >
+                Ю
+              </div>
+              <p class="mt-4 text-2xl font-medium text-white relative z-20">{{ item.name }}</p>
+            </div>
+            <p class="w-full mt-5 text-xl font-normal text-white whitespace-normal">
+              {{ item.feedback }}
+            </p>
+          </li>
+        </ul>
+        <a
+          href="https://yandex.ru/maps/org/stella_polare/219434381766/reviews/?indoorLevel=3&ll=37.502687%2C55.741186&z=16"
+        >
+          <button
+            class="mt-[5.625rem] mx-[3.907%] h-[5.625rem] w-[calc(100%-2*3.125rem)] border-none rounded-[1.25rem] bg-white/10 flex gap-x-7 justify-center items-center relative z-20"
+            type="btn"
+          >
+            <span class="text-[1.875rem] text-white font-normal">Написать свой отзыв</span>
+            <img src="./svg/write.svg" width="27" height="27" />
+          </button>
+        </a>
+      </section>
+
+      <!-- location -->
+      <section class="mt-[7.5rem] mx-[3.907%] px-[3.125rem]">
+        <h2
+          class="text-[2.5rem] font-medium mx-[3.907%] bg-[linear-gradient(to_right,_rgba(153,172,190,1)_0%,_rgba(224,240,255,1)_37%,_rgba(153,172,190,1)_63%,_rgba(50,61,72,1)_100%)] bg-clip-text text-transparent"
+        >
+          Пункт выдачи находится всего в 5<br />минутах от метро Багратионовская
+        </h2>
+        <div
+          class="w-full h-[28.9375rem] rounded-[1.25rem] mt-[3.125rem] py-[2.125rem] px-[1.875rem] flex justify-start items-end bg-[url('../images/location_bg.png')] bg-no-repeat bg-center bg-cover"
+        >
+          <div
+            class="w-[19.75rem] h-[20rem] py-[2.375rem] px-[1.25rem] flex flex-col gap-y-6 bg-white rounded-[1.25rem]"
+          >
+            <div class="px-2 flex flex-col justify-center gap-y-[0.625rem]">
+              <div class="flex items-center gap-x-2">
+                <svg
+                  width="14"
+                  height="20"
+                  viewBox="0 0 14 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    opacity="0.3"
+                    d="M7 9.5C6.33696 9.5 5.70107 9.23661 5.23223 8.76777C4.76339 8.29893 4.5 7.66304 4.5 7C4.5 6.33696 4.76339 5.70107 5.23223 5.23223C5.70107 4.76339 6.33696 4.5 7 4.5C7.66304 4.5 8.29893 4.76339 8.76777 5.23223C9.23661 5.70107 9.5 6.33696 9.5 7C9.5 7.3283 9.43534 7.65339 9.3097 7.95671C9.18406 8.26002 8.99991 8.53562 8.76777 8.76777C8.53562 8.99991 8.26002 9.18406 7.95671 9.3097C7.65339 9.43534 7.3283 9.5 7 9.5ZM7 0C5.14348 0 3.36301 0.737498 2.05025 2.05025C0.737498 3.36301 0 5.14348 0 7C0 12.25 7 20 7 20C7 20 14 12.25 14 7C14 5.14348 13.2625 3.36301 11.9497 2.05025C10.637 0.737498 8.85652 0 7 0Z"
+                    fill="#090C11"
+                  />
+                </svg>
+                <span class="text-2xl font-medium text-[#090C11]">Адрес</span>
+              </div>
+              <p class="text-xl font-normal text-[#090C11]/60">
+                Москва, ул. Барклая, дом 8, 3 этаж, 335 павильон
+              </p>
+              <a
+                class="text-xl font-normal text-[#0060D1] underline"
+                href="https://yandex.ru/maps/org/stella_polare/219434381766/?ll=37.502687%2C55.741186&z=7"
+                >Показать на карте</a
+              >
+            </div>
+            <div class="px-2 flex flex-col justify-center gap-y-[0.625rem]">
+              <div class="flex items-center gap-x-2">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    opacity="0.3"
+                    d="M15 1.33989C16.5083 2.21075 17.7629 3.46042 18.6398 4.96519C19.5167 6.46997 19.9854 8.17766 19.9994 9.91923C20.0135 11.6608 19.5725 13.3758 18.72 14.8946C17.8676 16.4133 16.6332 17.6831 15.1392 18.5782C13.6452 19.4733 11.9434 19.9627 10.2021 19.998C8.46083 20.0332 6.74055 19.6131 5.21155 18.7791C3.68256 17.9452 2.39787 16.7264 1.48467 15.2434C0.571462 13.7604 0.0614093 12.0646 0.00500011 10.3239L0 9.99989L0.00500011 9.67589C0.0610032 7.94888 0.563548 6.26585 1.46364 4.79089C2.36373 3.31592 3.63065 2.09934 5.14089 1.25977C6.65113 0.420205 8.35315 -0.0137108 10.081 0.000330246C11.8089 0.0143713 13.5036 0.47589 15 1.33989ZM10 3.99989C9.75507 3.99992 9.51866 4.08985 9.33563 4.25261C9.15259 4.41537 9.03566 4.63964 9.007 4.88289L9 4.99989V9.99989L9.009 10.1309C9.0318 10.3044 9.09973 10.4689 9.206 10.6079L9.293 10.7079L12.293 13.7079L12.387 13.7899C12.5624 13.926 12.778 13.9998 13 13.9998C13.222 13.9998 13.4376 13.926 13.613 13.7899L13.707 13.7069L13.79 13.6129C13.9261 13.4375 13.9999 13.2219 13.9999 12.9999C13.9999 12.7779 13.9261 12.5623 13.79 12.3869L13.707 12.2929L11 9.58489V4.99989L10.993 4.88289C10.9643 4.63964 10.8474 4.41537 10.6644 4.25261C10.4813 4.08985 10.2449 3.99992 10 3.99989Z"
+                    fill="black"
+                  />
+                </svg>
+                <span class="text-2xl font-medium text-[#090C11]">Часы работы</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-xl font-normal text-[#090C11]">Будни</span>
+                <span class="text-xl font-normal text-[#090C11]">10:00 - 19:00</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-xl font-normal text-[#090C11]/60">Выходные</span>
+                <span class="text-xl font-normal text-[#090C11]/60">12:00 - 17:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- questions -->
+      <section
+        class="mt-[136px] mx-[3.907%] pb-[110px] flex justify-between items-start relative before:block before:absolute before:w-[41.25rem] before:h-[29.8125rem] before:left-[50%] before:-top-4 before:-translate-x-[50%] before:z-10 before:filter before:blur-[30.0625rem] before:bg-[radial-gradient(ellipse_at_center,_#4D9FFF_20%,_#0050AD_50%,_#002F66_80%)] after:absolute after:block after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-[64%] after:h-[2px] after:rounded-[2000px] after:bg-gradient-to-r after:from-[#D1E3FF]/0 after:via-[#D1E3FF] after:to-[#D1E3FF]/0 after:[box-shadow:0px_0px_63.4px_3px_#2171f1]"
+      >
+        <div class="w-[29.04%] z-20">
+          <h2
+            class="text-[2.5rem] font-medium bg-[linear-gradient(to_right,_rgba(153,172,190,1)_0%,_rgba(224,240,255,1)_37%,_rgba(153,172,190,1)_63%,_rgba(50,61,72,1)_100%)] bg-clip-text text-transparent"
+          >
+            Часто задаваемые вопросы
+          </h2>
+          <p class="w-[79.25%] mt-[2.1875rem] text-2xl font-normal text-white/70">
+            Есть вопрос, на который не было ответа? Пиши на почту
+            <a
+              class="text-2xl font-normal text-white/70 relative underline"
+              href="mailto:example@example.com"
+              >поаоововлвлв</a
+            >
+          </p>
+        </div>
+        <ul class="w-[52.12%] flex flex-col gap-y-4 z-10">
+          <li v-for="(item, index) in questions" :key="index" class="question-item">
+            <div
+              class="w-full h-[4.625rem] border border-solid border-white/30 rounded-[1.25rem] bg-white/10 inline-flex items-center justify-between p-[1.5625rem] transition-transform duration-300 ease-linear"
+              @click="toggleQuestion(index)"
+            >
+              <span class="text-2xl font-medium text-white">{{ item.title }}</span>
+              <button
+                class="border-none bg-no justify-center inline-flex items-center transition-transform duration-300 ease-linear"
+                type="button"
+                :class="{ 'rotate-90': activeIndex === index }"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="transition-transform duration-300 ease-linear"
+                  :class="{
+                    'rotate-0': activeIndex !== index,
+                    'rotate-180': activeIndex === index,
+                  }"
+                >
+                  <path d="M10 2L10 18" stroke="#90969D" stroke-width="3" stroke-linecap="round" />
+                  <path d="M2 10L18 10" stroke="#90969D" stroke-width="3" stroke-linecap="round" />
+                </svg>
+              </button>
+            </div>
+
+            <div
+              class="text-2xl font-medium text-white/60 px-[1.5625rem] overflow-hidden transition-transform duration-300 ease-linear"
+              :class="{ 'mt-4': activeIndex === index }"
+              :style="{
+                maxHeight: activeIndex === index ? '100rem' : '0',
+                opacity: activeIndex === index ? '1' : '0',
+              }"
+            >
+              {{ item.content }}
+            </div>
+          </li>
+        </ul>
+        <div
+          class="absolute block bottom-0 left-1/2 -translate-x-1/2 w-[64%] h-[2px] rounded-[2000px] bg-gradient-to-r from-[#D1E3FF]/10 via-[#D1E3FF] to-[#D1E3FF]/10 [box-shadow:0px_0px_63.4px_2px_#2171f1] after:absolute after:block after:left-1/2 after:-translate-x-1/2 after:top-1/2 after:-translate-y-1/2 after:rounded-[50%] after:h-[81px] after:w-[50%] after:bg-[#0075FF] after:filter after:blur-[50px] after:-z-10"
+        ></div>
+      </section>
+
+      <!-- company products -->
+      <section
+        class="w-full h-[8.125rem] mt-[7.5rem] relative overflow-hidden before:block before:absolute before:w-[13.4375rem] before:h-full before:left-0 before:top-0 before:bg-gradient-to-r before:from-[#0A0F16] before:to-[#0A0F16]/0 before:z-10 after:block after:absolute after:w-[13.4375rem] after:h-full after:right-0 after:top-0 after:bg-gradient-to-r after:from-[#0A0F16]/0 after:to-[#0A0F16] after:z-10 opacity-40 whitespace-wrap"
+      >
+        <ul class="flex gap-x-[8.1875rem] items-center animate-scroll whitespace-wrap">
+          <li class="inline-block">
+            <svg
+              class="company_item_icon"
+              width="64"
+              height="75"
+              viewBox="0 0 64 75"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M52.6545 72C48.5712 75.9583 44.1128 75.3333 39.8212 73.4583C35.2795 71.5417 31.1128 71.4583 26.3212 73.4583C20.3212 76.0417 17.1545 75.2917 13.5712 72C-6.76218 51.0417 -3.76217 19.125 19.3212 17.9583C24.9462 18.25 28.8628 21.0417 32.1545 21.2917C37.0712 20.2917 41.7795 17.4167 47.0295 17.7917C53.3212 18.2917 58.0712 20.7917 61.1962 25.2917C48.1962 33.0833 51.2795 50.2083 63.1962 55C60.8212 61.25 57.7378 67.4583 52.6128 72.0417L52.6545 72ZM31.7378 17.7083C31.1128 8.41667 38.6545 0.75 47.3212 0C48.5295 10.75 37.5712 18.75 31.7378 17.7083Z"
+                fill="white"
+              />
+            </svg>
+          </li>
+          <li class="inline-block">
+            <svg
+              class="company_item_icon"
+              width="100"
+              height="68"
+              viewBox="0 0 100 68"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M83.1711 67.3344C82.8179 67.3319 82.48 67.1906 82.2303 66.9408C81.9805 66.6911 81.8392 66.3531 81.8367 66V2.00313C81.8392 1.64999 81.9805 1.31201 82.2303 1.0623C82.48 0.812584 82.8179 0.671211 83.1711 0.668755H98.6336C98.8115 0.665021 98.9883 0.696731 99.1538 0.762038C99.3193 0.827346 99.4702 0.924943 99.5976 1.04914C99.725 1.17334 99.8264 1.32166 99.8959 1.48544C99.9653 1.64923 100.002 1.82521 100.002 2.00313V66C100.002 66.75 99.3836 67.35 98.6336 67.3344H83.1711ZM57.243 67.3344C57.243 67.3344 56.0055 66.9594 56.0055 66V26.7094C56.0434 25.4843 55.8334 24.2642 55.3879 23.1224C54.9424 21.9806 54.2707 20.9406 53.4131 20.0649C52.5555 19.1892 51.5298 18.496 50.3975 18.0267C49.2653 17.5575 48.0498 17.322 46.8242 17.3344H17.918C16.243 17.3344 16.6648 18.5875 16.6648 18.5875V66C16.6648 67.1219 15.4117 67.3344 15.4117 67.3344H1.36484C1.18696 67.3381 1.01012 67.3064 0.844616 67.2411C0.679115 67.1758 0.528269 67.0782 0.400871 66.954C0.273473 66.8298 0.172071 66.6815 0.102576 66.5177C0.0330815 66.3539 -0.00311598 66.1779 -0.00390625 66V2.00313C-0.00390625 1.25313 0.614844 0.65313 1.36484 0.668755H54.9617C59.6617 0.70413 64.1579 2.59242 67.4737 5.92347C70.7895 9.25453 72.6572 13.7593 72.6711 18.4594L72.7023 66.0031C72.7027 66.1785 72.6685 66.3522 72.6016 66.5143C72.5347 66.6763 72.4364 66.8236 72.3124 66.9476C72.1884 67.0716 72.0412 67.1699 71.8791 67.2368C71.717 67.3037 71.5433 67.3379 71.368 67.3375L57.243 67.3344ZM28.4992 67.3344C28.1669 67.3344 27.8481 67.2024 27.6131 66.9673C27.3781 66.7323 27.2461 66.4136 27.2461 66.0813V28.5813C27.2461 27.8969 27.8148 27.3281 28.4992 27.3281H44.2055C44.8898 27.3594 45.4086 27.9156 45.4086 28.5813V66.0813C45.4102 66.245 45.3795 66.4074 45.3181 66.5591C45.2566 66.7109 45.1658 66.849 45.0508 66.9655C44.9357 67.082 44.7988 67.1746 44.6478 67.2379C44.4968 67.3012 44.3348 67.334 44.1711 67.3344H28.4992Z"
+                fill="white"
+              />
+            </svg>
+          </li>
+          <li class="inline-block">
+            <svg
+              class="company_item_icon"
+              width="130"
+              height="20"
+              viewBox="0 0 130 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M107.342 0.683415L107.591 15.2759H107.467L103.242 0.688833H96.2921V19.0622H100.885L100.636 3.97675H100.761L105.289 19.0622H111.935V0.688833L107.342 0.683415ZM19.8629 0.683415L16.3908 19.2518H21.4175L23.9633 2.36258H24.0879L26.5742 19.2518H31.5358L28.1233 0.688833L19.8629 0.683415ZM47.9267 0.683415L45.63 14.8426H45.5054L43.2088 0.688833H35.6417L35.2679 19.2518H39.9262L40.0508 2.55217H40.1104L43.2142 19.2518H47.9321L51.0358 2.55217H51.1604L51.285 19.2518H55.9433L55.51 0.688833L47.9267 0.683415ZM8.56917 13.9759C8.70536 14.4184 8.72587 14.8883 8.62875 15.3409C8.50417 15.9584 8.07083 16.5813 6.83042 16.5813C5.64958 16.5813 4.96708 15.8988 4.96708 14.9022V13.1038H0V14.5338C0 18.6938 3.28792 19.9342 6.77083 19.9342C10.1183 19.9342 12.9133 18.7534 13.3467 15.7093C13.5958 14.0951 13.4117 13.0443 13.3467 12.6705C12.48 8.75967 5.40042 7.63842 4.90208 5.46633C4.8411 5.13873 4.8411 4.80268 4.90208 4.47508C5.02667 3.85216 5.46542 3.22925 6.58125 3.22925C7.69708 3.22925 8.31458 3.91717 8.31458 4.90842V6.02425H12.9729V4.72425C12.9729 0.688833 9.31125 0.065918 6.70583 0.065918C3.4125 0.065918 0.6825 1.18175 0.184167 4.16634C0.02115 4.98783 0.0433554 5.83533 0.249167 6.64716C0.99125 10.493 7.6375 11.6143 8.56917 13.9705M68.9758 13.9705C69.16 14.4038 69.095 14.9672 69.0354 15.3409C68.9108 15.9584 68.4775 16.5813 67.2371 16.5813C66.0563 16.5813 65.3737 15.8988 65.3737 14.9022V13.1038H60.4067V14.5338C60.4067 18.6288 63.635 19.8692 67.1125 19.8692C70.4654 19.8692 73.1954 18.7534 73.6288 15.6497C73.8779 14.0355 73.6937 13.0443 73.6288 12.6055C72.8867 8.75967 65.8667 7.57883 65.3737 5.46633C65.3128 5.13873 65.3128 4.80268 65.3737 4.47508C65.4983 3.85216 65.9317 3.22925 67.0529 3.22925C68.1037 3.22925 68.7862 3.91717 68.7862 4.90842V6.02425H73.3796V4.72425C73.3796 0.688833 69.7775 0.065918 67.1721 0.065918C63.8842 0.065918 61.2137 1.12217 60.7154 4.16634C60.5908 4.97342 60.5908 5.7155 60.7804 6.64716C61.5225 10.493 68.0387 11.5492 68.9758 13.9705ZM84.6192 16.4568C85.9192 16.4568 86.2983 15.5901 86.4175 15.0917C86.4825 14.9022 86.4825 14.5934 86.4825 14.4093V0.683415H91.195V14.0301C91.195 14.4038 91.195 15.0863 91.1408 15.2759C90.8267 18.748 88.0967 19.8638 84.6787 19.8638C81.2663 19.8638 78.5362 18.748 78.2221 15.2705C78.2221 15.0863 78.1625 14.4038 78.1625 14.0301V0.683415H82.875V14.4038C82.875 14.653 82.875 14.8968 82.94 15.0863C82.94 15.5793 83.3192 16.4513 84.6192 16.4513M123.359 16.2672C124.724 16.2672 125.157 15.4005 125.282 14.8968C125.342 14.7126 125.342 14.4038 125.342 14.2143V11.5438H123.419V8.81384H130V13.7809C130 14.1547 130 14.4038 129.94 15.0268C129.626 18.4393 126.707 19.6147 123.419 19.6147C120.131 19.6147 117.211 18.4393 116.903 15.0213C116.838 14.4038 116.837 14.1547 116.837 13.7809V5.95925C116.837 5.6505 116.903 5.02758 116.903 4.71342C117.336 1.24133 120.131 0.1255 123.419 0.1255C126.707 0.1255 129.567 1.24133 129.935 4.71883C130 5.27675 130 5.95925 130 5.95925V6.58217H125.342V5.52592C125.342 5.52592 125.342 5.09259 125.282 4.84342C125.217 4.41009 124.849 3.47841 123.419 3.47841C122.054 3.47841 121.685 4.34509 121.555 4.84342C121.496 5.08717 121.496 5.40133 121.496 5.71008V14.2143C121.496 14.4634 121.496 14.7126 121.555 14.8968C121.555 15.3951 122.054 16.2672 123.359 16.2672Z"
+                fill="white"
+              />
+            </svg>
+          </li>
+          <li class="inline-block">
+            <svg
+              class="company_item_icon"
+              width="130"
+              height="130"
+              viewBox="0 0 130 130"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.3323 66.1416C18.3323 69.4261 15.7069 72.0537 12.4252 72.0537C9.14346 72.0537 6.51809 69.4261 6.51809 66.1416C6.51809 62.8571 9.14346 60.2295 12.4252 60.2295H18.3323V66.1416ZM24.8957 41.8364H18.3323V53.792H12.4252C5.59922 53.792 0.0859375 59.3099 0.0859375 66.1416C0.0859375 72.9733 5.59922 78.4913 12.4252 78.4913C19.2511 78.4913 24.7644 72.9733 24.7644 66.1416V53.792L24.8957 41.8364Z"
+                fill="white"
+              />
+              <path
+                d="M90.1377 72.0532C93.4194 72.0532 96.0447 69.4257 96.0447 66.1412C96.0447 62.8567 93.4194 60.2291 90.1377 60.2291C86.8559 60.2291 84.2306 62.8567 84.2306 66.1412C84.3618 69.4257 86.9872 72.0532 90.1377 72.0532ZM77.9297 66.1412C77.9297 59.3094 83.443 53.7915 90.2689 53.7915C97.0949 53.7915 102.608 59.3094 102.608 66.1412C102.608 72.9729 97.0949 78.4908 90.2689 78.4908C83.443 78.4908 77.9297 72.9729 77.9297 66.1412Z"
+                fill="white"
+              />
+              <path
+                d="M123.218 66.1412C123.218 62.9881 120.593 60.3605 117.442 60.3605C114.292 60.3605 111.667 62.9881 111.667 66.1412V77.9653H105.234V66.1412C105.234 59.3094 110.748 53.7915 117.574 53.7915C124.4 53.7915 129.913 59.3094 129.913 66.1412V77.9653H123.481C123.218 77.9653 123.218 67.7177 123.218 66.1412Z"
+                fill="white"
+              />
+              <path
+                d="M62.837 61.937C61.9181 61.2801 62.1806 60.229 63.7558 59.8349C65.7249 59.3094 69.1378 59.7035 72.0257 61.0173L75.0449 56.8132C73.7322 55.7621 70.8443 54.317 66.6437 54.0542C66.6437 54.0542 59.5552 53.1346 56.6673 58.5211C56.6673 58.5211 54.1732 63.5135 59.1614 66.6666C62.1806 68.5059 67.4314 69.2942 69.1378 70.0825C70.4505 70.8708 70.0567 72.316 68.0877 72.7101C64.6747 73.4984 60.2116 71.5277 58.7676 70.4766L55.6172 74.8122C57.7175 76.3887 60.3429 77.8339 64.5434 78.4908C64.5434 78.4908 71.2381 79.6732 74.9137 75.0749C75.57 74.2866 78.5892 68.6373 72.5508 65.3528C69.4004 63.6449 64.4122 62.8566 62.837 61.937Z"
+                fill="white"
+              />
+              <path
+                d="M32.6444 82.6953C32.9069 82.8267 35.9261 84.9288 38.814 84.9288C45.9025 85.0602 46.2963 77.7029 46.2963 75.995C44.9836 77.4402 42.227 78.3598 40.5205 78.3598C33.6945 78.3598 28.3125 73.1046 28.3125 66.2729V54.3174H34.7447V66.2729C34.7447 69.426 37.37 72.0536 40.5205 72.0536C43.6709 72.0536 46.2963 69.426 46.2963 66.2729V54.3174H52.7284V66.2729C52.7284 76.9146 53.2535 87.8191 42.8833 90.3153C35.1385 92.1546 29.6252 87.2936 29.2314 87.0308L32.6444 82.6953Z"
+                fill="white"
+              />
+            </svg>
+          </li>
+          <li class="inline-block">
+            <svg
+              class="company_item_icon"
+              width="84"
+              height="84"
+              viewBox="0 0 84 84"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M42.0027 30.4794C54.1152 42.7544 62.6527 57.146 69.786 73.0502C62.154 79.8992 52.2572 83.681 42.0027 83.6669C31.7481 83.681 21.8513 79.8992 14.2193 73.0502C21.3527 57.146 29.886 42.7544 42.0027 30.4794ZM14.9568 10.3044C22.4561 14.3435 29.4887 19.1949 35.9277 24.771C23.9027 36.996 15.261 51.0794 8.14849 66.296C3.05544 59.2199 0.321817 50.7187 0.335992 42.0002C0.32988 35.973 1.63432 30.0165 4.15893 24.5436C6.68354 19.0706 10.3679 14.212 14.9568 10.3044ZM69.0485 10.3044C73.6374 14.212 77.3218 19.0706 79.8464 24.5436C82.371 30.0165 83.6754 35.973 83.6693 42.0002C83.6693 51.0669 80.7735 59.4585 75.8568 66.2919C68.7443 51.0794 60.1027 37.0002 48.0777 24.771C54.5167 19.195 61.5492 14.3436 69.0485 10.3044ZM42.0027 0.333541C48.9818 0.333541 55.561 2.05021 61.3402 5.08354C54.4579 9.08862 47.9816 13.7536 42.0027 19.0127C36.0237 13.7537 29.5474 9.08866 22.6652 5.08354C28.6298 1.95388 35.2668 0.32359 42.0027 0.333541Z"
+                fill="white"
+              />
+            </svg>
+          </li>
+          <li class="inline-block">
+            <svg
+              class="company_item_icon"
+              width="130"
+              height="23"
+              viewBox="0 0 130 23"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M46.3125 0C51.3013 0 55.2934 1.24584 58.3429 4.01917C60.4284 5.90959 61.5929 8.60167 61.5604 11.4238C61.5553 12.8166 61.2675 14.1939 60.7144 15.4723C60.1614 16.7506 59.3546 17.9034 58.3429 18.8608C55.4884 21.4825 51.0413 22.88 46.3179 22.88C41.5946 22.88 37.2179 21.4825 34.32 18.8608C33.273 17.9288 32.4392 16.7821 31.8755 15.4986C31.3119 14.2152 31.0316 12.8253 31.0538 11.4238C31.0538 8.61792 32.2346 5.92584 34.32 4.01917C37.0283 1.56 41.8167 0 46.3125 0ZM46.3288 19.8792C48.8259 19.8792 51.1388 19.0071 52.7638 17.3983C54.3888 15.7733 55.1092 13.8233 55.1092 11.4238C55.1092 9.12708 54.3075 6.97667 52.7638 5.44917C51.1713 3.87834 48.7934 2.99 46.3288 2.99C43.8642 2.99 41.4917 3.87292 39.8829 5.44917C38.3392 6.97667 37.5321 9.12708 37.5321 11.4238C37.4991 13.647 38.3438 15.7937 39.8829 17.3983C41.4917 18.9908 43.8534 19.8792 46.3288 19.8792ZM20.1067 9.21917C20.9733 9.43945 21.8147 9.73375 22.6308 10.1021C23.3873 10.4519 24.0809 10.9241 24.6838 11.4996C25.7508 12.6154 26.3575 14.1104 26.3413 15.6542C26.3529 16.4683 26.1732 17.2737 25.8166 18.0057C25.46 18.7377 24.9366 19.3757 24.2883 19.8683C23.1394 20.7358 21.8362 21.3773 20.4479 21.7588C18.357 22.4173 16.1721 22.7284 13.9804 22.6796C12.0738 22.6796 11.0229 22.4575 9.57668 22.1542L9.1596 22.0675C7.56574 21.7157 6.00941 21.2114 4.5121 20.5617C4.44514 20.5163 4.36542 20.4935 4.2846 20.4967C4.16581 20.4995 4.05284 20.5487 3.96984 20.6337C3.88684 20.7187 3.8404 20.8328 3.84043 20.9517V22.0512H0.65543V14.0454H3.49376C3.51253 14.8568 3.77071 15.6445 4.23585 16.3096C5.38418 17.7179 6.61918 18.2596 7.7946 18.6929C9.78251 19.3429 11.8679 19.6896 13.9479 19.7546C16.9433 19.7546 18.6929 19.0288 19.0721 18.8717L19.1208 18.85L19.1533 18.8392C19.4892 18.7146 20.8433 18.2217 20.8433 16.7158C20.8433 15.2317 19.5758 14.9067 18.7471 14.6954L18.6279 14.6683C17.7071 14.4192 15.5838 14.1917 13.2654 13.9479L12.4421 13.8612C10.2682 13.6388 8.10493 13.3226 5.95835 12.9133C3.26085 12.3175 2.19918 11.3317 1.53835 10.7196L1.49501 10.6763C0.531674 9.64908 -0.00308058 8.29282 1.33508e-05 6.88459C1.33508e-05 4.19792 1.84168 2.57292 4.10585 1.57625C6.56897 0.524716 9.2223 -0.00816005 11.9004 0.0108377C16.3421 0.0270877 19.955 1.47334 21.255 2.145C21.7804 2.42667 22.0404 2.08 22.0404 1.82V1.01292H24.895V7.98959H22.3383C22.111 6.9534 21.5519 6.01965 20.7458 5.33C20.2553 4.93641 19.7142 4.61032 19.1371 4.36042C16.9947 3.4534 14.6871 3.00149 12.3608 3.03334C9.96126 3.03334 7.6646 3.49375 6.51085 4.19792C5.79224 4.6457 5.43112 5.1982 5.42751 5.85542C5.42751 6.7925 6.21835 7.16625 6.61918 7.28C7.68085 7.605 10.0425 7.83792 11.8788 8.02209L12.9838 8.13584C14.755 8.31459 18.4654 8.8075 20.1067 9.21917ZM118.511 3.81875V1.22417H130V3.77H127.422C126.49 3.77 126.111 3.94875 125.407 4.73958L117.677 13.5688C117.597 13.6778 117.56 13.8131 117.574 13.9479V17.9671C117.586 18.1541 117.608 18.3403 117.639 18.525C117.685 18.6428 117.758 18.7482 117.852 18.8329C117.946 18.9175 118.059 18.979 118.181 19.0125C118.414 19.0459 118.649 19.064 118.885 19.0667H121.518V21.6125H107.575V19.0667H110.067C110.302 19.064 110.538 19.0459 110.771 19.0125C110.895 18.9782 111.01 18.9167 111.108 18.8324C111.205 18.748 111.282 18.643 111.334 18.525C111.359 18.3454 111.376 18.1646 111.383 17.9833V13.9642C111.383 13.8287 111.383 13.8288 111.204 13.6175L103.561 4.94C103.15 4.51209 102.445 3.82417 101.362 3.82417H98.8813V1.27833H112.9V3.82417H111.21C110.83 3.82417 110.57 4.20333 110.895 4.615L115.657 10.3079C115.705 10.3729 115.738 10.3729 115.803 10.3242C115.868 10.2754 120.645 4.66375 120.678 4.615C120.718 4.56346 120.747 4.5044 120.764 4.4413C120.781 4.3782 120.785 4.31236 120.776 4.24769C120.767 4.18302 120.745 4.12084 120.711 4.06483C120.678 4.00883 120.633 3.96015 120.58 3.92167C120.485 3.8552 120.371 3.82102 120.255 3.82417L118.511 3.81875ZM84.4729 3.8025H87.1C88.2971 3.8025 88.5084 4.26292 88.5246 5.37875L88.6763 13.8612L74.6904 1.27292H64.6967V3.81875H66.9284C68.5371 3.81875 68.6509 4.70709 68.6509 5.49792V17.485C68.6509 18.1783 68.6563 19.0829 67.665 19.0829H64.9242V21.6125H76.6459V19.0667H73.7859C72.6375 19.0667 72.5942 18.5412 72.5725 17.4254V7.23125L88.6763 21.5908H92.7767L92.56 5.3625C92.5817 4.18167 92.6629 3.78625 93.8763 3.78625H96.4384V1.24042H84.4729V3.8025Z"
+                fill="white"
+              />
+            </svg>
+          </li>
+        </ul>
+      </section>
+
+      <!-- request -->
+      <section class="mx-[3.907%] mt-[6.875rem]">
+        <h2 class="text-[3.125rem] text-white font-medium text-center">
+          Оставь заявку и мы быстро <br />с вами свяжемся
+        </h2>
+        <p class="text-2xl text-white/70 font-normal text-center mt-[2.3125rem]">
+          Поможем с
+          <span class="text-white">оформлением заказа</span> и ответим на
+          <span class="text-white">все вопросы</span>
+        </p>
+        <div
+          class="mt-[3.875rem] h-[26.625rem] p-[2.8125rem] text-center relative z-0 before:block before:absolute before:w-full before:h-full before:left-0 before:top-0 before:opacity-25 before:rounded-[1.875rem] before:shadow-[inset_0px_0px_5px_white] before:bg-[linear-gradient(135deg,_#002e5c_15%,_#13171c_40%)] before:z-10"
+        >
+          <form class="w-[49.15%] flex mx-auto flex-col gap-y-4 relative z-20">
+            <input
+              class="h-[4rem] py-5 px-6 bg-[#C7E3FF]/20 border-none rounded-xl outline-none text-2xl font-normal text-white placeholder:text-2xl placeholder:text-white/30 placeholder:font-normal"
+              type="text"
+              placeholder="Имя"
+              required
+            />
+            <input
+              class="h-[4rem] py-5 px-6 bg-[#C7E3FF]/20 border-none rounded-xl outline-none text-2xl font-normal text-white placeholder:text-2xl placeholder:text-white/30 placeholder:font-normal"
+              type="tel"
+              placeholder="Номер телефона"
+              required
+            />
+            <input
+              class="h-[4rem] py-5 px-6 bg-[#C7E3FF]/20 border-none rounded-xl outline-none text-2xl font-normal text-white placeholder:text-2xl placeholder:text-white/30 placeholder:font-normal"
+              type="email"
+              placeholder="Почта"
+              required
+            />
+          </form>
+          <button
+            class="relative z-20 mt-[2.375rem] w-[49.15%] h-[4.75rem] border border-solid border-[#a0ccff] rounded-xl bg-[#0069e5] text-[1.75rem] text-white font-normal shadow-[inset_0px_0px_20px_rgba(255,255,255,0.4)]"
+            type="submit"
+          >
+            Отправить
+          </button>
+        </div>
+        <div class="mt-10 text-center flex flex-col gap-y-5">
+          <p class="text-xl text-white font-normal">Связаться самостоятельно</p>
+          <a class="text-xl text-white font-normal underline" href="tel:89255990016"
+            >8-925-599-00-16</a
+          >
+        </div>
       </section>
     </main>
 
@@ -53,3 +589,5 @@ import TheHeader from './components/TheHeader.vue'
     </footer>
   </div>
 </template>
+
+<style scoped></style>

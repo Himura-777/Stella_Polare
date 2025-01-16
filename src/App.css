@@ -1,0 +1,26 @@
+/* header */
+.max-h-96 {
+  max-height: 24rem;
+}
+
+.max-h-0 {
+  max-height: 0;
+}
+
+/* feedbacks */
+.feedbacks_item__odd {
+  justify-content: flex-end;
+}
+
+.feedbacks_item__even {
+  justify-content: flex-start;
+}
+
+/* questions*/
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}

@@ -429,7 +429,9 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
           class="pl-[3.907%] mt-[72px] flex gap-x-[42px] h-[500px] w-full overflow-x-scroll whitespace-nowrap scrollbar-none invisible opacity-0 transition-opacity duration-300 ease-linear delay-300"
           id="Apple_content"
         >
-          <li class="h-full w-[388px] pt-[34px] pl-[34px] pb-[33px] flex flex-col justify-end">
+          <li
+            class="h-full w-[388px] pt-[34px] pl-[34px] pb-[33px] flex flex-col justify-end bg-no-repeat bg"
+          >
             <div class="overlay"></div>
             <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
             <span class="product_price">110500₽</span>

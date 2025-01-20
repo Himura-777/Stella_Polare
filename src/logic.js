@@ -91,9 +91,8 @@ export function useQuestions() {
 export function useCarousel() {
   const items = [
     {
-      bgClass: 'bg-black',
       content: `
-      <div class="w-full h-[502px] rounded-[1.25rem] flex flex-col justify-center gap-y-10 bg-black bg-[url(../images/Iphone_hits.png)] bg-no-repeat bg-[right_6rem_center] bg-[length:456px_405px]">
+      <div class="w-full h-[502px] flex flex-col justify-center gap-y-10 bg-black bg-[url(../images/Iphone_hits.png)] bg-no-repeat bg-[right_6rem_center] bg-[length:456px_405px] rounded-[1.25rem]">
         <div class="ml-[10.17%] flex gap-x-5 items-center">
                   <svg
                     width="40"
@@ -163,7 +162,7 @@ export function useCarousel() {
     {
       content: `
       <div class="w-full h-[502px] rounded-[1.25rem] flex flex-col justify-center gap-y-10 bg-gradient-to-l from-[#8D3367] to-[#2A1A3E] before:absolute before:block before:w-full before:h-full before:left-0 before:top-0 before:bg-[url(../images/Dyson_hits.png)] before:bg-no-repeat before:bg-right-bottom before:bg-contain">
-        <div class="ml-[10.17%] flex flex-col gap-y-5">
+        <div class="ml-[10.17%] flex flex-col gap-y-5 z-10">
                   <svg
                     width="130"
                     height="49"

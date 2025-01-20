@@ -425,8 +425,11 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
           </ul>
         </div>
 
-        <ul class="products_list active" id="Apple_content">
-          <li class="product_item">
+        <ul
+          class="pl-[3.907%] mt-[72px] flex gap-x-[42px] h-[500px] w-full overflow-x-scroll whitespace-nowrap scrollbar-none invisible opacity-0 transition-opacity duration-300 ease-linear delay-300"
+          id="Apple_content"
+        >
+          <li class="h-full w-[388px] pt-[34px] pl-[34px] pb-[33px] flex flex-col justify-end">
             <div class="overlay"></div>
             <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
             <span class="product_price">110500₽</span>
@@ -458,166 +461,6 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
           </li>
           <li class="product_item">
             <div class="overlay"></div>
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-        </ul>
-        <ul class="products_list" id="Dyson_content">
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-        </ul>
-        <ul class="products_list" id="Sony_content">
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-        </ul>
-        <ul class="products_list" id="Xiaomi_content">
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-        </ul>
-        <ul class="products_list" id="Xbox_content">
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-        </ul>
-        <ul class="products_list" id="Apple_content">
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
-            <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
-            <span class="product_price">110500₽</span>
-            <button class="product_purchase" type="button">Приобрести</button>
-          </li>
-          <li class="product_item">
             <span class="product_title">Apple iPhone 15 Pro Max<br />256 GB Blue Titanium</span>
             <span class="product_price">110500₽</span>
             <button class="product_purchase" type="button">Приобрести</button>

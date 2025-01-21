@@ -3,8 +3,11 @@ import '../App.css'
 
 import Logo from './icons/logo.vue'
 
-import { openMenu, useMenuState } from '../logic.js'
-const { isMenuOpen } = useMenuState()
+import { useNavigation } from '../logic.js'
+const { activeItem, menuItems, setActive } = useNavigation()
+
+import { useMenu } from '../logic.js'
+const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
 </script>
 
 <template>
@@ -26,25 +29,35 @@ const { isMenuOpen } = useMenuState()
     <ul
       class="z-30 fixed left-[50%] -translate-x-1/2 rounded-full flex gap-x-10 bg-white/10 px-[1.875rem] backdrop-blur-3xl"
     >
-      <li class="py-5">
-        <a class="text-xl text-white text-opacity-80 font-normal" href="#">О компании</a>
-      </li>
-      <li class="py-5">
-        <a class="text-xl text-white text-opacity-80 font-normal" href="#">Контакты</a>
-      </li>
-      <li class="py-5">
-        <a class="text-xl text-white text-opacity-80 font-normal" href="#">Товары</a>
-      </li>
-      <li class="py-5">
-        <a class="text-xl text-white text-opacity-80 font-normal" href="#">Отзывы</a>
+      <li
+        v-for="item in menuItems"
+        :key="item.id"
+        class="py-5"
+        :class="{
+          'border-b-2 border-[#1E74F9]': activeItem === item.id,
+          'border-none': activeItem !== item.id,
+        }"
+        @click="setActive(item.id)"
+      >
+        <a
+          :href="item.href"
+          class="text-xl font-normal h-full"
+          :class="{
+            'text-white': activeItem === item.id,
+            'text-white/80': activeItem !== item.id,
+          }"
+        >
+          {{ item.label }}
+        </a>
       </li>
     </ul>
 
-    <button
+    <a
+      href="#contacts"
       class="px-6 py-5 border-[2px] border-solid border-white border-opacity-30 text-xl text-white font-medium rounded-full"
     >
       Связаться с нами
-    </button>
+    </a>
   </div>
 
   <div class="md:hidden relative">
@@ -86,16 +99,36 @@ const { isMenuOpen } = useMenuState()
       :class="{ 'max-h-96': isMenuOpen, 'max-h-0': !isMenuOpen }"
     >
       <li class="mt-4">
-        <a class="text-xl text-white text-opacity-80 font-normal" href="#">О компании</a>
+        <a
+          class="text-xl text-white text-opacity-80 font-normal"
+          href="#philosophy"
+          @click="scrollToAndCloseMenu('#philosophy')"
+          >О компании</a
+        >
       </li>
       <li>
-        <a class="text-xl text-white text-opacity-80 font-normal" href="#">Контакты</a>
+        <a
+          class="text-xl text-white text-opacity-80 font-normal"
+          href="#contacts"
+          @click="scrollToAndCloseMenu('#contacts')"
+          >Контакты</a
+        >
       </li>
       <li>
-        <a class="text-xl text-white text-opacity-80 font-normal" href="#">Товары</a>
+        <a
+          class="text-xl text-white text-opacity-80 font-normal"
+          href="#products"
+          @click="scrollToAndCloseMenu('#products')"
+          >Товары</a
+        >
       </li>
       <li>
-        <a class="text-xl text-white text-opacity-80 font-normal" href="#">Отзывы</a>
+        <a
+          class="text-xl text-white text-opacity-80 font-normal"
+          href="#feedbacks"
+          @click="scrollToAndCloseMenu('#feedbacks')"
+          >Отзывы</a
+        >
       </li>
       <li
         class="px-6 py-5 border-[2px] border-solid border-white border-opacity-30 text-xl text-white font-medium rounded-full mb-[24px]"
@@ -105,3 +138,9 @@ const { isMenuOpen } = useMenuState()
     </ul>
   </div>
 </template>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>

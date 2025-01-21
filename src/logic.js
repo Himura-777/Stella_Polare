@@ -1,12 +1,51 @@
 import { computed, ref } from 'vue'
 
-// header
-const isMenuOpen = ref(false)
-export function openMenu() {
-  isMenuOpen.value = !isMenuOpen.value
+// header showMenu
+export function useMenu() {
+  const isMenuOpen = ref(false)
+
+  // Открытие и закрытие меню
+  const openMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value
+  }
+
+  // Функция для прокрутки до элемента и закрытия меню
+  const scrollToAndCloseMenu = (target) => {
+    const element = document.querySelector(target)
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80, // Сдвигаем, чтобы учитывать высоту шапки
+        behavior: 'smooth',
+      })
+    }
+    isMenuOpen.value = false // Закрываем меню после клика
+  }
+
+  return {
+    isMenuOpen,
+    openMenu,
+    scrollToAndCloseMenu,
+  }
 }
-export function useMenuState() {
-  return { isMenuOpen }
+
+// header selectedItem
+export function useNavigation() {
+  const menuItems = [
+    { id: 1, label: 'О компании', href: '#philosophy' },
+    { id: 2, label: 'Товары', href: '#products' },
+    { id: 3, label: 'Отзывы', href: '#feedbacks' },
+  ]
+
+  const activeItem = ref(menuItems[0].id)
+  const setActive = (id) => {
+    activeItem.value = id // Устанавливаем активный элемент
+  }
+
+  return {
+    activeItem,
+    menuItems,
+    setActive,
+  }
 }
 
 // feedback
@@ -329,3 +368,5 @@ export function useCarousel() {
     transformStyle,
   }
 }
+
+// products

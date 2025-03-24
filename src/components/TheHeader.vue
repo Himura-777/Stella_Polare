@@ -3,10 +3,10 @@ import '../App.css'
 
 import Logo from './icons/logo.vue'
 
-import { useNavigation } from '../logic.js'
+import { useMenu, useNavigation } from '../logic.js'
+
 const { activeItem, menuItems, setActive } = useNavigation()
 
-import { useMenu } from '../logic.js'
 const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
 </script>
 
@@ -18,7 +18,7 @@ const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
       >
         <Logo />
         <p
-          class="z-10 text-2xl font-medium leading-7 text-transparent bg-clip-text bg-gradient-to-r from-white to-[#ACD1FD]"
+          class="z-10 text-2xl font-medium leading-7 text-transparent bg-clip-text bg-linear-to-r from-white to-[#ACD1FD]"
         >
           Stella <br />
           Polare
@@ -61,12 +61,12 @@ const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
   </div>
 
   <div class="md:hidden relative">
-    <div class="flex items-center justify-between bg-[#222429] rounded-xl px-[20px] py-[14px]">
+    <div class="flex items-center justify-between bg-[#222429] rounded-xl px-5 py-4">
       <a href="#">
         <div class="flex gap-x-3 items-center">
           <Logo />
           <p
-            class="z-10 text-2xl font-medium leading-7 text-transparent bg-clip-text bg-gradient-to-r from-white to-[#ACD1FD]"
+            class="z-10 text-base xl:text-2xl font-medium leading-5 xl:leading-7 text-transparent bg-clip-text bg-linear-to-r from-white to-[#ACD1FD]"
           >
             Stella <br />
             Polare
@@ -95,7 +95,7 @@ const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
     </div>
 
     <ul
-      class="z-30 w-full px-[1.875rem] bg-[#222429] rounded-b-xl flex flex-col gap-y-[20px] items-center overflow-hidden transition-all duration-300 absolute top-[80px]"
+      class="z-30 w-full px-[1.875rem] bg-[#222429] rounded-b-xl flex flex-col gap-y-[20px] items-center overflow-hidden transition-all duration-300 absolute top-[63px]"
       :class="{ 'max-h-96': isMenuOpen, 'max-h-0': !isMenuOpen }"
     >
       <li class="mt-4">

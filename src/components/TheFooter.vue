@@ -6,17 +6,17 @@ import Whatsapp from './icons/whatsapp.vue'
 </script>
 
 <template>
-  <div class="mx-[3.125rem]">
+  <div class="mx-5 xl:mx-13">
     <div
-      class="p-5 flex items-center justify-between bg-white bg-opacity-5 border border-solid border-[#BEDCFF] border-opacity-20 rounded-[20px]"
+      class="px-5 py-3 xl:p-5 flex items-center justify-between bg-white/5 border border-solid border-[#BEDCFF]/20 border-opacity-20 rounded-[20px]"
     >
-      <div class="flex flex-col gap-y-3.5">
+      <div class="flex flex-col gap-y-2 xl:gap-y-3.5">
         <div
-          class="flex gap-x-3 relative after:block after:w-[56%] after:h-[138%] after:inset-0 after:mt-[-4px] after:ml-[-7px] after:absolute after:bg-[#0052B3]/60 after:blur-2xl"
+          class="flex items-center gap-x-3 relative after:block after:w-[56%] after:h-[138%] after:inset-0 after:mt-[-4px] after:ml-[-7px] after:absolute after:bg-[#0052B3]/60 after:blur-2xl"
         >
           <Logo />
           <p
-            class="text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-white to-[#ACD1FD]"
+            class="z-10 text-base xl:text-2xl font-medium leading-5 xl:leading-7 text-transparent bg-clip-text bg-linear-to-r from-white to-[#ACD1FD]"
           >
             Stella <br />
             Polare
@@ -24,9 +24,7 @@ import Whatsapp from './icons/whatsapp.vue'
         </div>
         <div class="flex gap-x-1">
           <svg
-            class="flex items-center"
-            width="12"
-            height="12"
+            class="flex items-center w-2 aspect-[1/1] xl:w-3"
             viewBox="0 0 12 12"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +35,7 @@ import Whatsapp from './icons/whatsapp.vue'
               fill-opacity="0.7"
             />
           </svg>
-          <span class="text-xs text-white text-opacity-70 font-normal leading-3"
+          <span class="text-[0.5rem] xl:text-xs text-white text-opacity-70 font-normal leading-3"
             >2024 Stella Polare. Все права защищены</span
           >
         </div>
@@ -45,39 +43,37 @@ import Whatsapp from './icons/whatsapp.vue'
 
       <ul class="inline-flex items-center gap-x-3.5">
         <li
-          class="w-12 h-12 flex items-center justify-center bg-gradient-to-b from-[#7DBAFF]/20 to-[#0353B1]/20 rounded-full"
+          class="w-8 xl:w-12 aspect-[1/1] flex items-center justify-center bg-linear-to-b from-[#7DBAFF]/20 to-[#0353B1]/20 rounded-full"
         >
           <Telegram />
         </li>
         <li
-          class="w-12 h-12 flex items-center justify-center bg-gradient-to-b from-[#7DBAFF]/20 to-[#0353B1]/20 bg-opacity-20 rounded-full"
+          class="w-8 xl:w-12 aspect-[1/1] flex items-center justify-center bg-linear-to-b from-[#7DBAFF]/20 to-[#0353B1]/20 bg-opacity-20 rounded-full"
         >
           <Whatsapp />
         </li>
         <li
-          class="w-12 h-12 flex items-center justify-center bg-gradient-to-b from-[#7DBAFF]/20 to-[#0353B1]/20 bg-opacity-20 rounded-full"
+          class="w-8 xl:w-12 aspect-[1/1] flex items-center justify-center bg-linear-to-b from-[#7DBAFF]/20 to-[#0353B1]/20 bg-opacity-20 rounded-full"
         >
           <Instagram />
         </li>
       </ul>
     </div>
-    <ul class="mt-14 flex items-center justify-center gap-x-5">
+    <ul class="mt-10 xl:mt-14 flex items-center justify-center gap-x-4 xl:gap-x-5">
       <li>
-        <a class="text-xl text-white text-opacity-70 font-normal underline" href="#">Поддержка</a>
+        <a class="text-xs xl:text-xl text-white/70 font-normal underline" href="#">Поддержка</a>
       </li>
       <li>
-        <a class="text-xl text-white text-opacity-70 font-normal underline" href="#">О компании</a>
+        <a class="text-xs xl:text-xl text-white/70 font-normal underline" href="#">О компании</a>
       </li>
       <li>
-        <a class="text-xl text-white text-opacity-70 font-normal underline" href="#">Отзывы</a>
+        <a class="text-xs xl:text-xl text-white/70 font-normal underline" href="#">Отзывы</a>
       </li>
       <li>
-        <a class="text-xl text-white text-opacity-70 font-normal underline" href="#"
-          >Рекомендации</a
-        >
+        <a class="text-xs xl:text-xl text-white/70 font-normal underline" href="#">Рекомендации</a>
       </li>
       <li>
-        <a class="text-xl text-white text-opacity-70 font-normal underline" href="#">Товары</a>
+        <a class="text-xs xl:text-xl text-white/70 font-normal underline" href="#">Товары</a>
       </li>
     </ul>
   </div>

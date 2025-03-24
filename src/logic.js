@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 // header showMenu
 export function useMenu() {
@@ -126,16 +126,34 @@ export function useQuestions() {
   }
 }
 
+export function useGap() {
+  const gap = ref('40px')
+
+  const updateGap = () => {
+    gap.value = window.innerWidth < 1280 ? '40px' : '131px'
+    document.documentElement.style.setProperty('--gap', gap.value)
+  }
+
+  onMounted(() => {
+    updateGap()
+    window.addEventListener('resize', updateGap)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', updateGap)
+  })
+
+  return { gap }
+}
+
 // hits
 export function useCarousel() {
   const items = [
     {
       content: `
-      <div class="w-full h-[502px] flex flex-col justify-center gap-y-10 bg-black bg-[url(../images/Iphone_hits.png)] bg-no-repeat bg-[right_6rem_center] bg-[length:456px_405px] rounded-[1.25rem]">
-        <div class="ml-[10.17%] flex gap-x-5 items-center">
-                  <svg
-                    width="40"
-                    height="46"
+      <div class="w-full h-126 pt-15 rounded-xl flex flex-col items-center justify-start xl:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-black xl:bg-[url(../images/Iphone_hits.png)] bg-no-repeat bg-bottom xl:bg-[right_6rem_center] bg-[length:280px_248px] xl:bg-[length:456px_405px]">
+        <div class="xl:ml-[10.17%] flex gap-x-5 justify-center xl:items-center ">
+                  <svg class="w-6 md:w-8 xl:w-10 h-7 md:h-9 xl:h-11"
                     viewBox="0 0 40 46"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -185,24 +203,25 @@ export function useCarousel() {
                     </defs>
                   </svg>
 
-                  <span class="text-[2.5rem] text-medium text-white">Iphone 16 Pro</span>
+                  <span class="text-3xl md:text-4xl font-medium text-white">iPhone 16 Pro</span>
                 </div>
-                <a class="ml-[10.17%]" href="https://t.me/stellapolare07">
+                <a class="xl:ml-[10.17%]" href="https://t.me/stellapolare07">
                   <button
-                    class="border-none rounded-[200px] w-[151px] py-3 text-xl font-medium text-[#13171c] bg-white"
+                    class="border-none rounded-full w-38 py-3 text-xl font-medium text-[#13171c] bg-white"
                     type="button"
                   >
                     Купить
                   </button>
                 </a>
+                <img src="src/images/Iphone_hits.png" class="xl:hidden w-70 h-62">
                 </div>
       `,
     },
     {
       content: `
-      <div class="w-full h-[502px] rounded-[1.25rem] flex flex-col justify-center gap-y-10 bg-gradient-to-l from-[#8D3367] to-[#2A1A3E] before:absolute before:block before:w-full before:h-full before:left-0 before:top-0 before:bg-[url(../images/Dyson_hits.png)] before:bg-no-repeat before:bg-right-bottom before:bg-contain">
-        <div class="ml-[10.17%] flex flex-col gap-y-5 z-10">
-                  <svg
+      <div class="w-full h-126 pt-15 rounded-xl flex flex-col items-center justify-start xl:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-linear-to-l from-[#8D3367] to-[#2A1A3E] before:absolute before:block before:w-full before:h-full before:left-0 before:top-0 before:bg-[url(../images/Dyson_hits.png)] before:bg-no-repeat before:bg-right-bottom before:bg-[length:410px_320px] before:rounded-xl">
+        <div class="xl:ml-[10.17%] flex flex-col gap-y-5 z-10 items-center">
+                  <svg class="hidden md:block"
                     width="130"
                     height="49"
                     viewBox="0 0 130 49"
@@ -238,11 +257,11 @@ export function useCarousel() {
                     </defs>
                   </svg>
 
-                  <span class="text-[2.5rem] text-medium text-white">Горячие новинки Dyson</span>
+                  <span class="text-3xl md:text-4xl font-medium text-white text-center md:text-start w-2/3">Горячие новинки Dyson</span>
                 </div>
-                <a class="ml-[10.17%]" href="https://t.me/stellapolare07">
+                <a class="xl:ml-[10.17%]" href="https://t.me/stellapolare07">
                   <button
-                    class="border-none rounded-[200px] w-[151px] py-3 text-xl font-medium text-[#13171c] bg-white"
+                    class="border-none rounded-full w-38 py-3 text-xl font-medium text-[#13171c] bg-white"
                     type="button"
                   >
                     Смотреть
@@ -253,11 +272,9 @@ export function useCarousel() {
     },
     {
       content: `
-      <div class="w-full h-[502px] rounded-[1.25rem] flex flex-col justify-center gap-y-10 bg-white bg-[url(../images/Macbook_hits.png)] bg-no-repeat bg-[right_7rem_center] bg-contain">
-        <div class="ml-[10.17%] flex flex-col gap-y-5">
-                  <svg
-                    width="40"
-                    height="46"
+      <div class="w-full h-126 pt-15 rounded-xl flex flex-col items-center justify-start xl:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-white xl:bg-[url(../images/Macbook_hits.png)] bg-no-repeat bg-[right_7rem_center] bg-contain before:absolute before:block before:w-full before:h-[95%] before:left-0 before:top-0 xl:before:hidden before:bg-[url(../images/Macbook_hits_v.png)] before:bg-no-repeat before:bg-contain before:bg-bottom before:rounded-xl">
+        <div class="xl:ml-[10.17%] flex gap-x-5 justify-center xl:items-center ">
+                  <svg class="w-6 md:w-8 xl:w-10 h-7 md:h-9 xl:h-11"
                     viewBox="0 0 40 46"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -307,11 +324,11 @@ export function useCarousel() {
                     </defs>
                   </svg>
 
-                  <span class="text-[2.5rem] text-medium text-[#090C11]">MacBook Air M3</span>
+                  <span class="text-3xl md:text-4xl font-medium text-[#090C11]">MacBook Air M3</span>
                 </div>
-                <a class="ml-[10.17%]" href="https://t.me/stellapolare07">
+                <a class="xl:ml-[10.17%] z-10" href="https://t.me/stellapolare07">
                   <button
-                    class="border-none rounded-[200px] w-[151px] py-3 text-xl font-medium text-white bg-[#006BEA]"
+                    class="border-none rounded-full w-38 py-3 text-xl font-medium text-white bg-[#006BEA]"
                     type="button"
                   >
                     Купить
@@ -322,18 +339,19 @@ export function useCarousel() {
     },
     {
       content: `
-      <div class="w-full h-[502px] rounded-[1.25rem] flex flex-col justify-center gap-y-10 bg-[url(../images/Xiaomi_hits.png)] bg-center bg-cover bg-no-repeat">
-        <div class="ml-[10.17%]">
-                  <span class="hits_product_text text-[#090C11] font-medium text-[2.5rem]"
+      <div class="w-full h-126 pt-15 rounded-xl flex flex-col items-center justify-start xl:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-[url(../images/Xiaomi_hits_m.png)] xl:bg-[url(../images/Xiaomi_hits.png)] bg-center bg-cover bg-no-repeat"
+       style="background-position: -80px center;">
+        <div class="xl:ml-[10.17%]">
+                  <span class="block text-[#090C11] font-medium text-3xl md:text-4xl text-center"
                     >Зима в уюте</span
                   >
-                  <p class="mt-4 text-2xl font-medium text-[#090C11]/60">
+                  <p class="block mt-4 text-xl md:text-2xl text-[#090C11]/60  text-center">
                     С Xiaomi Mi Smart Kettle Pro
                   </p>
                 </div>
-                <a class="ml-[10.17%]" href="https://t.me/stellapolare07">
+                <a class="xl:ml-[10.17%]" href="https://t.me/stellapolare07">
                   <button
-                    class="border-none rounded-[200px] w-[151px] py-3 text-xl font-medium text-[#090C11] bg-white"
+                    class="border-none rounded-full w-38 py-3 text-xl font-medium text-[#090C11] bg-white"
                     type="button"
                   >
                     Заказать

@@ -161,7 +161,7 @@ export function useCarousel() {
   const items = [
     {
       content: `
-      <div class="w-full pt-15 sm:pt-0 h-126 sm:aspect-[16/7] sm:h-fit rounded-xl md:rounded-[18px] flex flex-col items-center justify-start sm:justify-center sm:items-start gap-y-7 md:gap-y-8 xl:gap-y-10 bg-black sm:bg-[url(../images/Iphone_hits.png)] bg-no-repeat bg-bottom sm:bg-[right_10%_center] bg-[length:280px_248px] sm:bg-[length:45%]">
+      <div class="w-full pt-15 sm:pt-0 h-126 sm:aspect-[16/7] sm:h-fit rounded-xl md:rounded-[18px] flex flex-col items-center justify-start sm:justify-center sm:items-start gap-y-7 md:gap-y-8 xl:gap-y-10 bg-black bg-[url(../images/Iphone_hits.png)] bg-no-repeat bg-[center_bottom_10%] sm:bg-[right_10%_center] bg-[length:65%] sm:bg-[length:45%]">
         <div class="sm:ml-[10.17%] flex gap-x-5 justify-center sm:items-center ">
                   <svg class="w-6 md:w-8 xl:w-10 h-7 md:h-9 xl:h-11"
                     viewBox="0 0 40 46"
@@ -223,7 +223,6 @@ export function useCarousel() {
                     Купить
                   </button>
                 </a>
-                <img src="src/images/Iphone_hits.png" class="sm:hidden w-70 h-62">
                 </div>
       `,
     },
@@ -349,7 +348,7 @@ export function useCarousel() {
     },
     {
       content: `
-      <div class="w-full h-126 pt-15 sm:pt-0 sm:aspect-[16/7] sm:h-fit rounded-xl md:rounded-[18px] flex flex-col items-center sm:items-start justify-start sm:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-[url(../images/Xiaomi_hits_m.png)] sm:bg-[url(../images/Xiaomi_hits.png)] bg-cover bg-no-repeat bg-[position:-80px_center] sm:bg-center"
+      <div class="w-full h-126 pt-15 sm:pt-0 sm:aspect-[16/7] sm:h-fit rounded-xl md:rounded-[18px] flex flex-col items-center sm:items-start justify-start sm:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-[url(../images/Xiaomi_hits_m.png)] sm:bg-[url(../images/Xiaomi_hits.png)] bg-cover bg-no-repeat bg-[right_-80px_center] sm:bg-center"
       >
         <div class="sm:ml-[10.17%]">
                   <span class="block text-[#090C11] font-medium text-3xl md:text-4xl text-center sm:text-start"

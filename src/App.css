@@ -1,3 +1,6 @@
+main {
+  overflow: hidden;
+}
 /* header */
 .max-h-96 {
   max-height: 24rem;
@@ -26,11 +29,9 @@
 }
 
 /* products */
+.products_nav_container,
 .products_nav {
-  overflow-x: scroll;
-  white-space: nowrap;
   scrollbar-width: none;
-  width: calc(100% - 20px);
 }
 
 .products_nav_item {

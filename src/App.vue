@@ -247,9 +247,9 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
           >
             Наша продукция
           </h2>
-          <div class="mt-7 xl:mt-15 w-[calc(100% - 20px)] md:w-fit">
+          <div class="products_nav_container overflow-x-scroll w-full">
             <ul
-              class="products_nav inline-flex h-fit py-1 items-center border border-solid border-white/10 bg-white/5 mx-5 rounded-l-[0.5rem] md:rounded-[0.5rem]"
+              class="products_nav flex h-fit py-1 items-center border border-solid border-white/10 bg-white/5 mx-5 rounded-[0.5rem] mt-7 xl:mt-15 w-fit"
             >
               <li
                 class="products_nav_item active mx-[2px] xl:mx-1 px-2 py-1 xl:py-3 xl:px-4 rounded-[0.375rem] xl:rounded-[0.75rem]"

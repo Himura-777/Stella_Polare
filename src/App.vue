@@ -1227,7 +1227,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </div>
 
               <div
-                class="text-2xl font-medium text-white/60 px-[1.5625rem] overflow-hidden transition-height duration-100 ease-linear"
+                class="text-lg xl:text-2xl font-medium text-white/60 px-[1.5625rem] overflow-hidden transition-height duration-100 ease-linear"
                 :class="{ 'mt-4': activeIndex === index }"
                 :style="{
                   maxHeight: activeIndex === index ? '100rem' : '0',

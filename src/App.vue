@@ -1163,9 +1163,9 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
 
         <!-- questions -->
         <section
-          class="mt-17 md:mt-34 mx-5 pb-10 md:pb-27 md:flex justify-between items-start relative before:block before:absolute before:w-[41.25rem] before:h-[29.8125rem] before:left-[50%] before:-top-4 before:-translate-x-[50%] before:z-10 before:filter before:blur-[30.0625rem] before:bg-[radial-gradient(ellipse_at_center,_#4D9FFF_20%,_#0050AD_50%,_#002F66_80%)]"
+          class="mt-17 md:mt-34 mx-5 pb-10 md:pb-27 md:flex justify-between items-start relative before:block before:absolute before:w-[41.25rem] before:h-[29.8125rem] before:left-[50%] before:-top-4 before:-translate-x-[50%] before:filter before:blur-[30.0625rem] before:bg-[radial-gradient(ellipse_at_center,_#4D9FFF_20%,_#0050AD_50%,_#002F66_80%)] before:z-1"
         >
-          <div class="xl:w-[29.04%] z-20 xl:mx-5">
+          <div class="xl:w-[29.04%] relative z-10 xl:mx-5">
             <h2
               class="text-2xl xl:text-[2.5rem] font-medium mr-5 xl:mx-5 bg-[linear-gradient(to_right,_rgba(153,172,190,1)_0%,_rgba(224,240,255,1)_37%,_rgba(153,172,190,1)_63%,_rgba(50,61,72,1)_100%)] bg-clip-text text-transparent"
             >
@@ -1182,7 +1182,9 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               >
             </p>
           </div>
-          <ul class="md:w-[90%] xl:w-[52.12%] flex flex-col gap-y-3 md:gap-y-4 z-10 mt-5 md:mt-0">
+          <ul
+            class="md:w-[90%] xl:w-[52.12%] flex flex-col gap-y-3 md:gap-y-4 relative z-10 mt-5 md:mt-0"
+          >
             <li v-for="(item, index) in questions" :key="index" class="question-item">
               <div
                 class="w-full h-15 xl:h-19 border border-solid border-white/30 rounded-2xl xl:rounded-[1.25rem] bg-white/10 inline-flex items-center justify-between p-5 xl:p-6 transition-transform duration-300 ease-linear"
@@ -1236,7 +1238,9 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </div>
             </li>
           </ul>
-          <p class="md:hidden mt-[2.1875rem] text-base text-white/70 text-center px-5">
+          <p
+            class="md:hidden mt-[2.1875rem] text-base text-white/70 text-center px-5 relative z-10"
+          >
             Есть вопрос, на который не было ответа? Пиши на почту
             <a class="text-base text-white/70 relative underline" href="mailto:example@example.com"
               >sp@gmail.com</a

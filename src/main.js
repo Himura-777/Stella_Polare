@@ -23,6 +23,9 @@ chaptersProducts.forEach((item) => {
 
     item.classList.add('active')
     const contentId = item.getAttribute('data-content')
-    document.getElementById(contentId).classList.add('active')
+    const activeContent = document.getElementById(contentId)
+    activeContent.classList.add('active')
+
+    activeContent.scrollTo(0, 0)
   })
 })

@@ -130,7 +130,17 @@ export function useGap() {
   const gap = ref('40px')
 
   const updateGap = () => {
-    gap.value = window.innerWidth < 1280 ? '40px' : '131px'
+    if (window.innerWidth > 1280) {
+      gap.value = '128px'
+    } else if (window.innerWidth > 1024 && window.innerWidth < 1280) {
+      gap.value = '112px'
+    } else if (window.innerWidth > 768 && window.innerWidth < 1024) {
+      gap.value = '80px'
+    } else if (window.innerWidth > 480 && window.innerWidth < 768) {
+      gap.value = '60px'
+    } else {
+      gap.value = '40px'
+    }
     document.documentElement.style.setProperty('--gap', gap.value)
   }
 
@@ -151,8 +161,8 @@ export function useCarousel() {
   const items = [
     {
       content: `
-      <div class="w-full h-126 pt-15 rounded-xl flex flex-col items-center justify-start xl:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-black xl:bg-[url(../images/Iphone_hits.png)] bg-no-repeat bg-bottom xl:bg-[right_6rem_center] bg-[length:280px_248px] xl:bg-[length:456px_405px]">
-        <div class="xl:ml-[10.17%] flex gap-x-5 justify-center xl:items-center ">
+      <div class="w-full pt-15 sm:pt-0 h-126 sm:aspect-[16/7] sm:h-fit rounded-xl md:rounded-[18px] flex flex-col items-center justify-start sm:justify-center sm:items-start gap-y-7 md:gap-y-8 xl:gap-y-10 bg-black sm:bg-[url(../images/Iphone_hits.png)] bg-no-repeat bg-bottom sm:bg-[right_10%_center] bg-[length:280px_248px] sm:bg-[length:45%]">
+        <div class="sm:ml-[10.17%] flex gap-x-5 justify-center sm:items-center ">
                   <svg class="w-6 md:w-8 xl:w-10 h-7 md:h-9 xl:h-11"
                     viewBox="0 0 40 46"
                     fill="none"
@@ -205,7 +215,7 @@ export function useCarousel() {
 
                   <span class="text-3xl md:text-4xl font-medium text-white">iPhone 16 Pro</span>
                 </div>
-                <a class="xl:ml-[10.17%]" href="https://t.me/stellapolare07">
+                <a class="sm:ml-[10.17%]" href="https://t.me/stellapolare07">
                   <button
                     class="border-none rounded-full w-38 py-3 text-xl font-medium text-[#13171c] bg-white"
                     type="button"
@@ -213,14 +223,14 @@ export function useCarousel() {
                     Купить
                   </button>
                 </a>
-                <img src="src/images/Iphone_hits.png" class="xl:hidden w-70 h-62">
+                <img src="src/images/Iphone_hits.png" class="sm:hidden w-70 h-62">
                 </div>
       `,
     },
     {
       content: `
-      <div class="w-full h-126 pt-15 rounded-xl flex flex-col items-center justify-start xl:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-linear-to-l from-[#8D3367] to-[#2A1A3E] before:absolute before:block before:w-full before:h-full before:left-0 before:top-0 before:bg-[url(../images/Dyson_hits.png)] before:bg-no-repeat before:bg-right-bottom before:bg-[length:410px_320px] before:rounded-xl">
-        <div class="xl:ml-[10.17%] flex flex-col gap-y-5 z-10 items-center">
+      <div class="w-full h-126 pt-15 sm:pt-0 sm:aspect-[16/7] sm:h-fit rounded-xl md:rounded-[18px] flex flex-col items-center justify-start sm:justify-center sm:items-start gap-y-7 md:gap-y-8 xl:gap-y-10 bg-linear-to-l from-[#8D3367] to-[#2A1A3E] before:absolute before:block before:w-full before:h-full before:left-0 before:top-0 before:bg-[url(../images/Dyson_hits.png)] before:bg-no-repeat before:bg-right-bottom before:bg-[length:410px] sm:before:bg-[length:70%] before:rounded-xl">
+        <div class="sm:ml-[10.17%] flex flex-col gap-y-5 z-10 items-center sm:items-start">
                   <svg class="hidden md:block"
                     width="130"
                     height="49"
@@ -257,9 +267,9 @@ export function useCarousel() {
                     </defs>
                   </svg>
 
-                  <span class="text-3xl md:text-4xl font-medium text-white text-center md:text-start w-2/3">Горячие новинки Dyson</span>
+                  <span class="text-3xl md:text-4xl font-medium text-white text-center sm:text-start w-2/3">Горячие новинки Dyson</span>
                 </div>
-                <a class="xl:ml-[10.17%]" href="https://t.me/stellapolare07">
+                <a class="sm:ml-[10.17%]" href="https://t.me/stellapolare07">
                   <button
                     class="border-none rounded-full w-38 py-3 text-xl font-medium text-[#13171c] bg-white"
                     type="button"
@@ -272,8 +282,8 @@ export function useCarousel() {
     },
     {
       content: `
-      <div class="w-full h-126 pt-15 rounded-xl flex flex-col items-center justify-start xl:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-white xl:bg-[url(../images/Macbook_hits.png)] bg-no-repeat bg-[right_7rem_center] bg-contain before:absolute before:block before:w-full before:h-[95%] before:left-0 before:top-0 xl:before:hidden before:bg-[url(../images/Macbook_hits_v.png)] before:bg-no-repeat before:bg-contain before:bg-bottom before:rounded-xl">
-        <div class="xl:ml-[10.17%] flex gap-x-5 justify-center xl:items-center ">
+      <div class="w-full h-126 sm:aspect-[16/7] sm:h-fit pt-15 sm:pt-0 rounded-xl md:rounded-[18px] flex flex-col items-center sm:items-start justify-start sm:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-white sm:bg-[url(../images/Macbook_hits.png)] bg-no-repeat bg-[right_10%_center] sm:bg-right bg-contain sm:bg-[length:41%] before:absolute before:block before:w-full before:h-[95%] before:left-0 before:top-0 sm:before:hidden before:bg-[url(../images/Macbook_hits_v.png)] before:bg-no-repeat before:bg-[length:100%_68%] before:bg-bottom before:rounded-xl">
+        <div class="sm:ml-[10.17%] flex gap-x-5 justify-center sm:items-center z-10">
                   <svg class="w-6 md:w-8 xl:w-10 h-7 md:h-9 xl:h-11"
                     viewBox="0 0 40 46"
                     fill="none"
@@ -326,7 +336,7 @@ export function useCarousel() {
 
                   <span class="text-3xl md:text-4xl font-medium text-[#090C11]">MacBook Air M3</span>
                 </div>
-                <a class="xl:ml-[10.17%] z-10" href="https://t.me/stellapolare07">
+                <a class="sm:ml-[10.17%] z-10" href="https://t.me/stellapolare07">
                   <button
                     class="border-none rounded-full w-38 py-3 text-xl font-medium text-white bg-[#006BEA]"
                     type="button"
@@ -339,17 +349,17 @@ export function useCarousel() {
     },
     {
       content: `
-      <div class="w-full h-126 pt-15 rounded-xl flex flex-col items-center justify-start xl:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-[url(../images/Xiaomi_hits_m.png)] xl:bg-[url(../images/Xiaomi_hits.png)] bg-center bg-cover bg-no-repeat"
-       style="background-position: -80px center;">
-        <div class="xl:ml-[10.17%]">
-                  <span class="block text-[#090C11] font-medium text-3xl md:text-4xl text-center"
+      <div class="w-full h-126 pt-15 sm:pt-0 sm:aspect-[16/7] sm:h-fit rounded-xl md:rounded-[18px] flex flex-col items-center sm:items-start justify-start sm:justify-center gap-y-7 md:gap-y-8 xl:gap-y-10 bg-[url(../images/Xiaomi_hits_m.png)] sm:bg-[url(../images/Xiaomi_hits.png)] bg-cover bg-no-repeat bg-[position:-80px_center] sm:bg-center"
+      >
+        <div class="sm:ml-[10.17%]">
+                  <span class="block text-[#090C11] font-medium text-3xl md:text-4xl text-center sm:text-start"
                     >Зима в уюте</span
                   >
-                  <p class="block mt-4 text-xl md:text-2xl text-[#090C11]/60  text-center">
+                  <p class="block mt-4 text-xl md:text-2xl text-[#090C11]/60  text-center sm:text-start">
                     С Xiaomi Mi Smart Kettle Pro
                   </p>
                 </div>
-                <a class="xl:ml-[10.17%]" href="https://t.me/stellapolare07">
+                <a class="sm:ml-[10.17%]" href="https://t.me/stellapolare07">
                   <button
                     class="border-none rounded-full w-38 py-3 text-xl font-medium text-[#090C11] bg-white"
                     type="button"
@@ -386,5 +396,3 @@ export function useCarousel() {
     transformStyle,
   }
 }
-
-// products

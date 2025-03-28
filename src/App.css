@@ -26,6 +26,13 @@
 }
 
 /* products */
+.products_nav {
+  overflow-x: scroll;
+  white-space: nowrap;
+  scrollbar-width: none;
+  width: calc(100% - 20px);
+}
+
 .products_nav_item {
   transition: background-color 0.5s ease;
 }

@@ -157,7 +157,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
         <section class="pt-19 mx-5">
           <ul class="flex gap-5 flex-wrap w-full">
             <li
-              class="p-6 flex flex-col justify-end items-start w-full xl:w-[52.543%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/assortment.png')]"
+              class="p-6 flex flex-col justify-end items-start w-full md:w-[52%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/assortment.png')]"
             >
               <div class="w-[77%]">
                 <h3 class="text-lg xl:text-[1.75rem] font-medium text-white">
@@ -170,7 +170,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </div>
             </li>
             <li
-              class="p-6 flex flex-col justify-end items-start w-full xl:w-[52.543%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/consultation.png')]"
+              class="p-6 flex flex-col justify-end items-start w-full md:w-[45.2%] lg:w-[45.9%] xl:w-[46.3%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/consultation.png')]"
             >
               <div class="w-[88.8%]">
                 <h3 class="text-lg xl:text-[1.75rem] font-medium text-white">
@@ -183,7 +183,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </div>
             </li>
             <li
-              class="p-6 flex flex-col justify-end items-start w-full xl:w-[52.543%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/stock.png')]"
+              class="p-6 flex flex-col justify-end items-start w-full md:w-[45.2%] lg:w-[45.9%] xl:w-[46.3%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/stock.png')]"
             >
               <div class="w-[68%]">
                 <h3 class="text-lg xl:text-[1.75rem] font-medium text-white">
@@ -196,7 +196,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </div>
             </li>
             <li
-              class="p-6 flex flex-col justify-end items-start w-full xl:w-[52.543%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/guarantee.png')]"
+              class="p-6 flex flex-col justify-end items-start w-full md:w-[52%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/guarantee.png')]"
             >
               <div class="w-[69%]">
                 <h3 class="text-lg xl:text-[1.75rem] font-medium text-white">
@@ -209,7 +209,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </div>
             </li>
             <li
-              class="p-6 flex flex-col justify-end items-start w-full xl:w-[52.543%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/engraving.png')]"
+              class="p-6 flex flex-col justify-end items-start w-full md:w-[52%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/engraving.png')]"
             >
               <div class="w-[95%]">
                 <h3 class="text-lg xl:text-[1.75rem] font-medium text-white">
@@ -224,7 +224,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </div>
             </li>
             <li
-              class="p-6 flex flex-col justify-end items-start w-full xl:w-[52.543%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/original.png')]"
+              class="p-6 flex flex-col justify-end items-start w-full md:w-[45.2%] lg:w-[45.9%] xl:w-[46.3%] h-53 xl:h-82 rounded-xl bg-no-repeat bg-left-top bg-cover shadow-[inset_0px_0px_10px_rgba(255,255,255,0.1)] bg-[url('../images/original.png')]"
             >
               <div class="w-[90%]">
                 <h3 class="text-lg xl:text-[1.75rem] font-medium text-white">
@@ -247,9 +247,9 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
           >
             Наша продукция
           </h2>
-          <div class="mt-7 xl:mt-15">
+          <div class="mt-7 xl:mt-15 w-[calc(100% - 20px)] md:w-fit">
             <ul
-              class="flex h-11 items-center border border-solid border-white/10 bg-white/5 mx-5 w-fit rounded-[0.5rem]"
+              class="products_nav inline-flex h-fit py-1 items-center border border-solid border-white/10 bg-white/5 mx-5 rounded-l-[0.5rem] md:rounded-[0.5rem]"
             >
               <li
                 class="products_nav_item active mx-[2px] xl:mx-1 px-2 py-1 xl:py-3 xl:px-4 rounded-[0.375rem] xl:rounded-[0.75rem]"
@@ -324,7 +324,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
                 data-content="Dyson_content"
               >
                 <button
-                  class="py-[12px] px-[16px] flex gap-x-[12px] items-center justify-center bg-none border-none"
+                  class="xl:py-3 xl:px-4 flex gap-x-3 items-center justify-center bg-none border-none"
                   type="button"
                 >
                   <div
@@ -369,7 +369,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
                 data-content="Sony_content"
               >
                 <button
-                  class="py-[12px] px-[16px] flex gap-x-[12px] items-center justify-center bg-none border-none"
+                  class="xl:py-3 xl:px-4 flex gap-x-3 items-center justify-center bg-none border-none"
                   type="button"
                 >
                   <div
@@ -398,7 +398,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
                 data-content="Xiaomi_content"
               >
                 <button
-                  class="py-[12px] px-[16px] flex gap-x-[12px] items-center justify-center bg-none border-none"
+                  class="xl:py-3 xl:px-4 flex gap-x-3 items-center justify-center bg-none border-none"
                   type="button"
                 >
                   <div
@@ -427,7 +427,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
                 data-content="Xbox_content"
               >
                 <button
-                  class="py-[12px] px-[16px] flex gap-x-[12px] items-center justify-center bg-none border-none"
+                  class="xl:py-3 xl:px-4 flex gap-x-3 items-center justify-center bg-none border-none"
                   type="button"
                 >
                   <div
@@ -572,7 +572,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
             id="Dyson_content"
           >
             <li
-              class="product_item Dyson_product_item w-97 h-full p-8 flex flex-col justify-end bg-no-repeat bg-[center_top_22px] bg-[#717171]/10 rounded-[1.25rem] xl:rounded-[1.875rem] relative z-1"
+              class="product_item Apple_product_item w-97 h-full p-8 flex flex-col justify-end bg-no-repeat bg-[center_top_22px] bg-[#717171]/10 rounded-[1.25rem] xl:rounded-[1.875rem] relative z-1"
             >
               <div class="overlay"></div>
               <span class="text-lg xl:text-2xl font-normal text-white/60 text-center z-40"
@@ -685,7 +685,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
             id="Sony_content"
           >
             <li
-              class="product_item Sony_product_item w-97 h-full p-8 flex flex-col justify-end bg-no-repeat bg-[center_top_22px] bg-[#717171]/10 rounded-[1.25rem] xl:rounded-[1.875rem] relative z-1"
+              class="product_item Apple_product_item w-97 h-full p-8 flex flex-col justify-end bg-no-repeat bg-[center_top_22px] bg-[#717171]/10 rounded-[1.25rem] xl:rounded-[1.875rem] relative z-1"
             >
               <div class="overlay"></div>
               <span class="text-lg xl:text-2xl font-normal text-white/60 text-center z-40"
@@ -798,7 +798,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
             id="Xiaomi_content"
           >
             <li
-              class="product_item Xiaomi_product_item w-97 h-full p-8 flex flex-col justify-end bg-no-repeat bg-[center_top_22px] bg-[#717171]/10 rounded-[1.25rem] xl:rounded-[1.875rem] relative z-1"
+              class="product_item Apple_product_item w-97 h-full p-8 flex flex-col justify-end bg-no-repeat bg-[center_top_22px] bg-[#717171]/10 rounded-[1.25rem] xl:rounded-[1.875rem] relative z-1"
             >
               <div class="overlay"></div>
               <span class="text-lg xl:text-2xl font-normal text-white/60 text-center z-40"
@@ -911,7 +911,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
             id="Xbox_content"
           >
             <li
-              class="product_item Xbox_product_item w-97 h-full p-8 flex flex-col justify-end bg-no-repeat bg-[center_top_22px] bg-[#717171]/10 rounded-[1.25rem] xl:rounded-[1.875rem] relative z-1"
+              class="product_item Apple_product_item w-97 h-full p-8 flex flex-col justify-end bg-no-repeat bg-[center_top_22px] bg-[#717171]/10 rounded-[1.25rem] xl:rounded-[1.875rem] relative z-1"
             >
               <div class="overlay"></div>
               <span class="text-lg xl:text-2xl font-normal text-white/60 text-center z-40"
@@ -1038,7 +1038,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
           </p>
 
           <p
-            class="mx-auto w-[70%] xl:w-[30.5%] text-base xl:text-2xl text-white/70 text-center font-medium"
+            class="mx-auto w-[70%] md:w-[37%] xl:w-[30.5%] text-base xl:text-2xl text-white/70 text-center font-medium"
           >
             Людей стали немного счастливее с нашими товарами
           </p>
@@ -1102,7 +1102,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
             Пункт выдачи находится всего в 5 минутах от метро Багратионовская
           </h2>
           <div
-            class="w-full h-116 rounded-[1.25rem] mt-7 xl:mt-13 p-4 xl:p-7 flex justify-start items-end bg-[url('../images/locationM.jpg')] xl:bg-[url('../images/location_bg.png')] bg-no-repeat bg-center bg-cover"
+            class="w-full h-116 rounded-[1.25rem] mt-7 xl:mt-13 p-4 xl:p-7 flex justify-start items-end bg-[url('../images/locationM.jpg')] md:bg-[url('../images/location_bg.png')] bg-no-repeat bg-center bg-cover"
           >
             <div
               class="w-62 xl:w-79 h-fit p-3 l:py-9 xl:px-5 flex flex-col gap-y-4 xl:gap-y-6 bg-white rounded-[1.25rem]"
@@ -1163,7 +1163,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
 
         <!-- questions -->
         <section
-          class="mt-17 xl:mt-34 mx-5 pb-10 xl:pb-27 xl:flex justify-between items-start relative before:block before:absolute before:w-[41.25rem] before:h-[29.8125rem] before:left-[50%] before:-top-4 before:-translate-x-[50%] before:z-10 before:filter before:blur-[30.0625rem] before:bg-[radial-gradient(ellipse_at_center,_#4D9FFF_20%,_#0050AD_50%,_#002F66_80%)]"
+          class="mt-17 md:mt-34 mx-5 pb-10 md:pb-27 md:flex justify-between items-start relative before:block before:absolute before:w-[41.25rem] before:h-[29.8125rem] before:left-[50%] before:-top-4 before:-translate-x-[50%] before:z-10 before:filter before:blur-[30.0625rem] before:bg-[radial-gradient(ellipse_at_center,_#4D9FFF_20%,_#0050AD_50%,_#002F66_80%)]"
         >
           <div class="xl:w-[29.04%] z-20 xl:mx-5">
             <h2
@@ -1171,7 +1171,9 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
             >
               Часто задаваемые вопросы
             </h2>
-            <p class="hidden xl:block w-[79.25%] mt-[2.1875rem] text-2xl font-normal text-white/70">
+            <p
+              class="hidden md:block md:w-1/2 xl:w-[79.25%] xl:mx-5 mt-[2.1875rem] md:text-lg xl:text-2xl font-normal text-white/70"
+            >
               Есть вопрос, на который не было ответа? Пиши на почту
               <a
                 class="text-2xl font-normal text-white/70 relative underline"
@@ -1180,7 +1182,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               >
             </p>
           </div>
-          <ul class="xl:w-[52.12%] flex flex-col gap-y-3 xl:gap-y-4 z-10 xl:mx-5 mt-5 xl:mt-0">
+          <ul class="md:w-[90%] xl:w-[52.12%] flex flex-col gap-y-3 md:gap-y-4 z-10 mt-5 md:mt-0">
             <li v-for="(item, index) in questions" :key="index" class="question-item">
               <div
                 class="w-full h-15 xl:h-19 border border-solid border-white/30 rounded-2xl xl:rounded-[1.25rem] bg-white/10 inline-flex items-center justify-between p-5 xl:p-6 transition-transform duration-300 ease-linear"
@@ -1234,7 +1236,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </div>
             </li>
           </ul>
-          <p class="xl:hidden mt-[2.1875rem] text-base text-white/70 text-center px-5">
+          <p class="md:hidden mt-[2.1875rem] text-base text-white/70 text-center px-5">
             Есть вопрос, на который не было ответа? Пиши на почту
             <a class="text-base text-white/70 relative underline" href="mailto:example@example.com"
               >sp@gmail.com</a
@@ -1247,10 +1249,12 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
           class="w-full h-[8.125rem] xl:mt-30 relative overflow-hidden before:block before:absolute before:w-[13.4375rem] before:h-full before:left-0 before:top-0 before:bg-linear-to-r before:from-[#0A0F16] before:to-[#0A0F16]/0 before:z-10 after:block after:absolute after:w-[13.4375rem] after:h-full after:right-0 after:top-0 after:bg-linear-to-r after:from-[#0A0F16]/0 after:to-[#0A0F16] after:z-10 opacity-40 whitespace-nowrap"
         >
           <div class="scroll-wrapper flex w-max animate-scroll" :style="{ '--gap': gap }">
-            <ul class="company_icons_list flex gap-x-10 xl:gap-x-32 items-center whitespace-nowrap">
+            <ul
+              class="company_icons_list flex gap-x-10 sm:gap-x-15 md:gap-x-20 lg:gap-x-28 xl:gap-x-32 items-center whitespace-nowrap"
+            >
               <li class="inline-block">
                 <svg
-                  class="w-8 h-9 xl:w-16 xl:h-19"
+                  class="w-8 h-9 md:w-12 md:h-14 xl:w-16 xl:h-19"
                   viewBox="0 0 64 75"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1263,7 +1267,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </li>
               <li class="inline-block">
                 <svg
-                  class="w-13 h-9 xl:w-20 xl:h-17"
+                  class="w-13 h-9 md:w-16 md:h-13 xl:w-20 xl:h-17"
                   viewBox="0 0 100 68"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1276,7 +1280,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </li>
               <li class="inline-block">
                 <svg
-                  class="w-16 h-3 xl:w-32 xl:h-5"
+                  class="w-16 h-3 md:w-24 md:h-4 xl:w-32 xl:h-5"
                   viewBox="0 0 130 20"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1289,7 +1293,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </li>
               <li class="inline-block">
                 <svg
-                  class="w-20 h-30 xl:w-32 xl:h-32"
+                  class="w-20 h-30 md:w-26 md:h-26 xl:w-32 xl:h-32"
                   viewBox="0 0 130 130"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1318,7 +1322,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </li>
               <li class="inline-block">
                 <svg
-                  class="w-10 h-10 xl:w-21 xl:h-21"
+                  class="w-10 h-10 md:w-15 md:h-15 xl:w-21 xl:h-21"
                   viewBox="0 0 84 84"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1331,7 +1335,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </li>
               <li class="inline-block">
                 <svg
-                  class="w-16 h-3 xl:w-32 xl:h-6"
+                  class="w-16 h-3 md:w-24 md:h-4 xl:w-32 xl:h-6"
                   width="130"
                   height="23"
                   viewBox="0 0 130 23"
@@ -1348,10 +1352,12 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
 
             <div class="gap-div" :style="{ width: gap }"></div>
 
-            <ul class="company_icons_list flex gap-x-10 xl:gap-x-32 items-center whitespace-nowrap">
+            <ul
+              class="company_icons_list flex gap-x-10 sm:gap-x-15 md:gap-x-20 lg:gap-x-28 xl:gap-x-32 items-center whitespace-nowrap"
+            >
               <li class="inline-block">
                 <svg
-                  class="w-8 h-9 xl:w-16 xl:h-19"
+                  class="w-8 h-9 md:w-12 md:h-14 xl:w-16 xl:h-19"
                   viewBox="0 0 64 75"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1364,7 +1370,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </li>
               <li class="inline-block">
                 <svg
-                  class="w-13 h-9 xl:w-20 xl:h-17"
+                  class="w-13 h-9 md:w-16 md:h-13 xl:w-20 xl:h-17"
                   viewBox="0 0 100 68"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1377,7 +1383,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </li>
               <li class="inline-block">
                 <svg
-                  class="w-16 h-3 xl:w-32 xl:h-5"
+                  class="w-16 h-3 md:w-24 md:h-4 xl:w-32 xl:h-5"
                   viewBox="0 0 130 20"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1390,7 +1396,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </li>
               <li class="inline-block">
                 <svg
-                  class="w-20 h-30 xl:w-32 xl:h-32"
+                  class="w-20 h-30 md:w-26 md:h-26 xl:w-32 xl:h-32"
                   viewBox="0 0 130 130"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1419,7 +1425,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </li>
               <li class="inline-block">
                 <svg
-                  class="w-10 h-10 xl:w-21 xl:h-21"
+                  class="w-10 h-10 md:w-15 md:h-15 xl:w-21 xl:h-21"
                   viewBox="0 0 84 84"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -1432,7 +1438,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
               </li>
               <li class="inline-block">
                 <svg
-                  class="w-16 h-3 xl:w-32 xl:h-6"
+                  class="w-16 h-3 md:w-24 md:h-4 xl:w-32 xl:h-6"
                   width="130"
                   height="23"
                   viewBox="0 0 130 23"
@@ -1468,7 +1474,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
             <div
               class="h-fit p-6 xl:p-11 text-center relative z-0 before:block before:absolute before:w-full before:h-full before:left-0 before:top-0 before:opacity-25 before:rounded-[1.25rem] xl:before:rounded-[1.875rem] before:shadow-[inset_0px_0px_5px_white] before:bg-[linear-gradient(135deg,_#002e5c_15%,_#13171c_40%)] before:z-10"
             >
-              <form class="xl:w-[49.15%] flex mx-auto flex-col gap-y-4 relative z-20">
+              <form class="xl:w-[49.15%] md:w-1/2 flex mx-auto flex-col gap-y-4 relative z-20">
                 <input
                   class="h-14 xl:h-16 py-5 px-6 bg-[#C7E3FF]/20 border-none rounded-xl outline-hidden text-lg xl:text-2xl text-white placeholder:text-lg xl:placeholder:text-2xl placeholder:text-white/30"
                   type="text"
@@ -1489,7 +1495,7 @@ const { activeIndex, questions, toggleQuestion } = useQuestions()
                 />
               </form>
               <button
-                class="relative z-20 mt-5 xl:mt-9 w-full xl:w-[49.15%] h-17 xl:h-19 border border-solid border-[#a0ccff] rounded-xl bg-[#0069e5] text-lg xl:text-[1.75rem] text-white font-normal shadow-[inset_0px_0px_20px_rgba(255,255,255,0.4)]"
+                class="relative z-20 mt-5 xl:mt-9 w-full xl:w-[49.15%] md:w-1/2 h-17 xl:h-19 border border-solid border-[#a0ccff] rounded-xl bg-[#0069e5] text-lg xl:text-[1.75rem] text-white font-normal shadow-[inset_0px_0px_20px_rgba(255,255,255,0.4)]"
                 type="submit"
               >
                 Отправить

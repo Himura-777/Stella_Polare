@@ -11,7 +11,7 @@ const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
 </script>
 
 <template>
-  <div class="md:flex items-center justify-between hidden">
+  <div class="lg:flex items-center justify-between hidden">
     <a href="#">
       <div
         class="flex gap-x-3 items-center relative after:block after:w-[93.8%] after:h-[130%] after:inset-0 after:my-auto after:ml-[-3px] after:absolute after:bg-[#0052B3]/60 after:blur-2xl"
@@ -60,7 +60,7 @@ const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
     </a>
   </div>
 
-  <div class="md:hidden relative">
+  <div class="lg:hidden relative">
     <div class="flex items-center justify-between bg-[#222429] rounded-xl px-5 py-4">
       <a href="#">
         <div class="flex gap-x-3 items-center">

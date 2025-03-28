@@ -6,7 +6,7 @@ import Whatsapp from './icons/whatsapp.vue'
 </script>
 
 <template>
-  <div class="mx-5 xl:mx-13">
+  <div class="mx-5 md:mx-9 xl:mx-13">
     <div
       class="px-5 py-3 xl:p-5 flex items-center justify-between bg-white/5 border border-solid border-[#BEDCFF]/20 border-opacity-20 rounded-[20px]"
     >
@@ -59,21 +59,31 @@ import Whatsapp from './icons/whatsapp.vue'
         </li>
       </ul>
     </div>
-    <ul class="mt-10 xl:mt-14 flex items-center justify-center gap-x-4 xl:gap-x-5">
+    <ul class="mt-10 xl:mt-14 flex items-center justify-center gap-x-2 md:gap-x-3 xl:gap-x-5">
       <li>
-        <a class="text-xs xl:text-xl text-white/70 font-normal underline" href="#">Поддержка</a>
+        <a class="text-xs md:text-base xl:text-xl text-white/70 font-normal underline" href="#"
+          >Поддержка</a
+        >
       </li>
       <li>
-        <a class="text-xs xl:text-xl text-white/70 font-normal underline" href="#">О компании</a>
+        <a class="text-xs md:text-base xl:text-xl text-white/70 font-normal underline" href="#"
+          >О компании</a
+        >
       </li>
       <li>
-        <a class="text-xs xl:text-xl text-white/70 font-normal underline" href="#">Отзывы</a>
+        <a class="text-xs md:text-base xl:text-xl text-white/70 font-normal underline" href="#"
+          >Отзывы</a
+        >
       </li>
       <li>
-        <a class="text-xs xl:text-xl text-white/70 font-normal underline" href="#">Рекомендации</a>
+        <a class="text-xs md:text-base xl:text-xl text-white/70 font-normal underline" href="#"
+          >Рекомендации</a
+        >
       </li>
       <li>
-        <a class="text-xs xl:text-xl text-white/70 font-normal underline" href="#">Товары</a>
+        <a class="text-xs md:text-base xl:text-xl text-white/70 font-normal underline" href="#"
+          >Товары</a
+        >
       </li>
     </ul>
   </div>

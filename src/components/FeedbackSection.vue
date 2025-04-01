@@ -45,7 +45,9 @@ function getItemClass(index) {
     >
       Что говорят<br />наши клиенты
     </h2>
-    <ul class="overflow-x-scroll px-10 xl:px-12 flex gap-x-5 relative z-20 min-h-[23.75rem]">
+    <ul
+      class="feedback_list overflow-x-scroll px-10 xl:px-12 flex gap-x-5 relative z-20 min-h-[23.75rem]"
+    >
       <li
         v-for="(item, index) in feedbackItems"
         :key="index"
@@ -83,6 +85,10 @@ function getItemClass(index) {
 </template>
 
 <style scoped>
+.feedback_list {
+  scrollbar-width: none;
+}
+
 .feedbacks_item__odd {
   justify-content: flex-end;
 }

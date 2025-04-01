@@ -1,13 +1,107 @@
 <script setup>
-import '../App.css'
-
+import { onMounted, onUnmounted, ref } from 'vue'
 import Logo from './icons/logo.vue'
 
-import { useMenu, useNavigation } from '../logic.js'
+const isMenuOpen = ref(false)
 
-const { activeItem, menuItems, setActive } = useNavigation()
+const openMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
 
-const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
+const scrollToAndCloseMenu = (target) => {
+  const element = document.querySelector(target)
+  if (element) {
+    window.scrollTo({
+      top: element.offsetTop - 80,
+      behavior: 'smooth',
+    })
+
+    const matchingItem = menuItems.find((item) => item.href === target)
+    if (matchingItem) {
+      activeItem.value = matchingItem.id
+      history.replaceState(null, null, target)
+    }
+  }
+  isMenuOpen.value = false
+}
+
+const menuItems = [
+  { id: 1, label: 'О компании', href: '#philosophy' },
+  { id: 2, label: 'Товары', href: '#products' },
+  { id: 3, label: 'Отзывы', href: '#feedbacks' },
+]
+
+const activeItem = ref(menuItems[0].id)
+const setActive = (id) => {
+  activeItem.value = id
+}
+
+const handleScroll = () => {
+  const sections = menuItems
+    .map((item) => ({
+      id: item.id,
+      element: document.querySelector(item.href),
+      href: item.href,
+    }))
+    .filter((section) => section.element !== null)
+
+  const scrollPosition = window.scrollY + 100
+  let isInSection = false
+
+  for (const section of sections) {
+    const element = section.element
+    const offsetTop = element.offsetTop
+    const offsetHeight = element.offsetHeight
+
+    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+      isInSection = true
+      if (activeItem.value !== section.id) {
+        activeItem.value = section.id
+        if (window.location.hash !== section.href) {
+          history.replaceState(null, null, section.href)
+        }
+      }
+      break
+    }
+  }
+
+  if (!isInSection && window.location.hash) {
+    history.replaceState(null, null, ' ')
+    activeItem.value = null
+  }
+}
+
+// Закрытие меню при клике вне его
+const handleClickOutside = (event) => {
+  const menu = document.querySelector('.mobile-menu')
+  const button = document.querySelector('.menu-button')
+
+  if (menu && !menu.contains(event.target) && !button.contains(event.target)) {
+    isMenuOpen.value = false
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('click', handleClickOutside)
+
+  if (window.location.hash) {
+    const matchingItem = menuItems.find((item) => item.href === window.location.hash)
+    if (matchingItem) {
+      activeItem.value = matchingItem.id
+      setTimeout(() => {
+        scrollToAndCloseMenu(window.location.hash)
+      }, 100)
+    }
+  }
+
+  handleScroll()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('click', handleClickOutside)
+})
 </script>
 
 <template>
@@ -74,7 +168,7 @@ const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
         </div>
       </a>
 
-      <button class="px-[20px] py-[10px] bg-white/10 rounded-lg" @click="openMenu">
+      <button class="menu-button px-[20px] py-[10px] bg-white/10 rounded-lg" @click="openMenu">
         <svg
           class="transform transition-transform duration-300"
           :class="{ 'rotate-45': isMenuOpen }"
@@ -95,43 +189,43 @@ const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
     </div>
 
     <ul
-      class="z-30 w-full px-[1.875rem] bg-[#222429] rounded-b-xl flex flex-col gap-y-[20px] items-center overflow-hidden transition-all duration-300 absolute top-[63px]"
+      class="mobile-menu z-30 w-full px-[1.875rem] bg-[#222429] rounded-b-xl flex flex-col items-center overflow-hidden transition-all duration-300 absolute top-[63px]"
       :class="{ 'max-h-96': isMenuOpen, 'max-h-0': !isMenuOpen }"
     >
-      <li class="mt-4">
+      <li class="mt-4 w-full text-center py-3">
         <a
-          class="text-xl text-white text-opacity-80 font-normal"
+          class="text-xl text-white text-opacity-80 font-normal block w-full"
           href="#philosophy"
           @click="scrollToAndCloseMenu('#philosophy')"
           >О компании</a
         >
       </li>
-      <li>
+      <li class="w-full text-center py-3">
         <a
-          class="text-xl text-white text-opacity-80 font-normal"
+          class="text-xl text-white text-opacity-80 font-normal block w-full"
           href="#contacts"
           @click="scrollToAndCloseMenu('#contacts')"
           >Контакты</a
         >
       </li>
-      <li>
+      <li class="w-full text-center py-3">
         <a
-          class="text-xl text-white text-opacity-80 font-normal"
+          class="text-xl text-white text-opacity-80 font-normal block w-full"
           href="#products"
           @click="scrollToAndCloseMenu('#products')"
           >Товары</a
         >
       </li>
-      <li>
+      <li class="w-full text-center py-3">
         <a
-          class="text-xl text-white text-opacity-80 font-normal"
+          class="text-xl text-white text-opacity-80 font-normal block w-full"
           href="#feedbacks"
           @click="scrollToAndCloseMenu('#feedbacks')"
           >Отзывы</a
         >
       </li>
       <li
-        class="px-6 py-5 border-[2px] border-solid border-white border-opacity-30 text-xl text-white font-medium rounded-full mb-[24px]"
+        class="mt-3 px-6 py-5 border-[2px] border-solid border-white border-opacity-30 text-xl text-white font-medium rounded-full mb-[24px]"
       >
         Связаться с нами
       </li>
@@ -142,5 +236,13 @@ const { isMenuOpen, openMenu, scrollToAndCloseMenu } = useMenu()
 <style>
 html {
   scroll-behavior: smooth;
+}
+
+.max-h-96 {
+  max-height: 24rem;
+}
+
+.max-h-0 {
+  max-height: 0;
 }
 </style>

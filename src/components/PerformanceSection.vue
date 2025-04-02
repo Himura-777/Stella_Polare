@@ -13,10 +13,12 @@
     >
       Широкий выбор качественной техники по выгодным ценам
     </p>
-    <button
-      class="relative z-10 px-6 py-5 bg-white rounded-full text-[#13171C] text-xl font-medium"
-    >
-      Приобрести у нас
-    </button>
+    <a href="https://t.me/stellapolare07">
+      <button
+        class="relative z-10 px-6 py-5 bg-white rounded-full text-[#13171C] text-xl font-medium"
+      >
+        Приобрести у нас
+      </button>
+    </a>
   </section>
 </template>

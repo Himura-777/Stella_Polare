@@ -3,6 +3,8 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import Logo from './icons/logo.vue'
 
 const isMenuOpen = ref(false)
+const isFixed = ref(false)
+const scrollY = ref(0)
 
 const openMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
@@ -71,7 +73,26 @@ const handleScroll = () => {
   }
 }
 
-// Закрытие меню при клике вне его
+const handleMobileScroll = () => {
+  if (window.innerWidth >= 1024) return
+
+  const newScrollY = window.scrollY
+  const headerHeight = 125
+  const threshold = 10
+
+  if (newScrollY > headerHeight + threshold) {
+    if (!isFixed.value) {
+      isFixed.value = true
+    }
+  } else if (newScrollY < headerHeight - threshold) {
+    if (isFixed.value) {
+      isFixed.value = false
+    }
+  }
+
+  scrollY.value = newScrollY
+}
+
 const handleClickOutside = (event) => {
   const menu = document.querySelector('.mobile-menu')
   const button = document.querySelector('.menu-button')
@@ -83,6 +104,7 @@ const handleClickOutside = (event) => {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', handleMobileScroll)
   window.addEventListener('click', handleClickOutside)
 
   if (window.location.hash) {
@@ -100,6 +122,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('scroll', handleMobileScroll)
   window.removeEventListener('click', handleClickOutside)
 })
 </script>
@@ -114,7 +137,8 @@ onUnmounted(() => {
         <p
           class="z-10 text-2xl font-medium leading-7 text-transparent bg-clip-text bg-linear-to-r from-white to-[#ACD1FD]"
         >
-          Stella <br />
+          Stella
+          <br />
           Polare
         </p>
       </div>
@@ -154,7 +178,14 @@ onUnmounted(() => {
     </a>
   </div>
 
-  <div class="lg:hidden relative">
+  <div
+    class="lg:hidden mobile-header rounded-xl z-50 transition-transform duration-300 ease-in-out"
+    :class="{
+      'fixed top-0 left-0 bg-[#222429] m-5 w-[calc(100%-40px)] header-visible': isFixed,
+      'relative header-hidden': !isFixed && scrollY > 120,
+      relative: !isFixed && scrollY <= 120,
+    }"
+  >
     <div class="flex items-center justify-between bg-[#222429] rounded-xl px-5 py-4">
       <a href="#">
         <div class="flex gap-x-3 items-center">
@@ -162,7 +193,8 @@ onUnmounted(() => {
           <p
             class="z-10 text-base xl:text-2xl font-medium leading-5 xl:leading-7 text-transparent bg-clip-text bg-linear-to-r from-white to-[#ACD1FD]"
           >
-            Stella <br />
+            Stella
+            <br />
             Polare
           </p>
         </div>
@@ -197,37 +229,46 @@ onUnmounted(() => {
           class="text-xl text-white text-opacity-80 font-normal block w-full"
           href="#philosophy"
           @click="scrollToAndCloseMenu('#philosophy')"
-          >О компании</a
         >
+          О компании
+        </a>
       </li>
       <li class="w-full text-center py-3">
         <a
           class="text-xl text-white text-opacity-80 font-normal block w-full"
           href="#contacts"
           @click="scrollToAndCloseMenu('#contacts')"
-          >Контакты</a
         >
+          Контакты
+        </a>
       </li>
       <li class="w-full text-center py-3">
         <a
           class="text-xl text-white text-opacity-80 font-normal block w-full"
           href="#products"
           @click="scrollToAndCloseMenu('#products')"
-          >Товары</a
         >
+          Товары
+        </a>
       </li>
       <li class="w-full text-center py-3">
         <a
           class="text-xl text-white text-opacity-80 font-normal block w-full"
           href="#feedbacks"
           @click="scrollToAndCloseMenu('#feedbacks')"
-          >Отзывы</a
         >
+          Отзывы
+        </a>
       </li>
       <li
-        class="mt-3 px-6 py-5 border-[2px] border-solid border-white border-opacity-30 text-xl text-white font-medium rounded-full mb-[24px]"
+        class="mt-3 px-6 py-5 border-[2px] border-solid border-white border-opacity-30 rounded-full mb-[24px]"
       >
-        Связаться с нами
+        <a
+          class="block text-center text-xl text-white font-medium text-white"
+          href="tel:89255990016"
+        >
+          Связаться с нами
+        </a>
       </li>
     </ul>
   </div>
@@ -244,5 +285,18 @@ html {
 
 .max-h-0 {
   max-height: 0;
+}
+
+.mobile-header {
+  will-change: transform;
+  transition: transform 0.3s ease-out;
+}
+
+.header-visible {
+  transform: translateY(0);
+}
+
+.header-hidden {
+  transform: translateY(-100%);
 }
 </style>

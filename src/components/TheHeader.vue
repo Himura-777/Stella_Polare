@@ -102,10 +102,20 @@ const handleClickOutside = (event) => {
   }
 }
 
+const addOutsideClickHandlers = () => {
+  document.addEventListener('click', handleClickOutside)
+  document.addEventListener('touchstart', handleClickOutside)
+}
+
+const removeOutsideClickHandlers = () => {
+  document.removeEventListener('click', handleClickOutside)
+  document.removeEventListener('touchstart', handleClickOutside)
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
   window.addEventListener('scroll', handleMobileScroll)
-  window.addEventListener('click', handleClickOutside)
+  addOutsideClickHandlers()
 
   if (window.location.hash) {
     const matchingItem = menuItems.find((item) => item.href === window.location.hash)
@@ -123,7 +133,7 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
   window.removeEventListener('scroll', handleMobileScroll)
-  window.removeEventListener('click', handleClickOutside)
+  removeOutsideClickHandlers()
 })
 </script>
 
